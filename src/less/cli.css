@@ -1,0 +1,116 @@
+/*
+*列表页，按钮区域的样式
+*/
+.flex-end-center {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.flex-end-center .btn {
+  margin: 5px;
+}
+/*
+*常用
+*/
+.l {
+  float: left;
+}
+.r {
+  float: right;
+}
+.clear {
+  clear: both;
+}
+.tc {
+  text-align: center;
+  vertical-align: middle;
+}
+.warp {
+  white-space: pre-wrap;
+}
+/*
+*高度值
+*/
+.h16 {
+  height: 16px;
+}
+.h18 {
+  height: 18px;
+}
+.h20 {
+  height: 20px;
+}
+.h22 {
+  height: 22px;
+}
+.h24 {
+  height: 24px;
+}
+.h26 {
+  height: 26px;
+}
+.h28 {
+  height: 28px;
+}
+.h30 {
+  height: 30px;
+}
+.h32 {
+  height: 32px;
+}
+.h34 {
+  height: 34px;
+}
+.h36 {
+  height: 36px;
+}
+.h38 {
+  height: 38px;
+}
+.h40 {
+  height: 40px;
+}
+.h42 {
+  height: 42px;
+}
+.h44 {
+  height: 44px;
+}
+.h46 {
+  height: 46px;
+}
+.h48 {
+  height: 48px;
+}
+.h50 {
+  height: 50px;
+}
+.h60 {
+  height: 60px;
+}
+.h70 {
+  height: 70px;
+}
+.h80 {
+  height: 80px;
+}
+.h90 {
+  height: 90px;
+}
+.h100 {
+  height: 100px;
+}
+.ml5 {
+  margin-left: 5px;
+}
+.ml10 {
+  margin-left: 10px;
+}
+.ml15 {
+  margin-left: 15px;
+}
+.ml20 {
+  margin-left: 20px;
+}
+/*# sourceMappingURL=cli.css.map */

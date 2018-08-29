@@ -1,0 +1,22 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,body{
+  font-size: 14px;
+  font-family: PingFangSC-Regular,sans-serif,"Hiragino Sans GB","Microsoft Yahei",SimSun,Arial,"Helvetica Neue",Helvetica;
+  background-color: #f6f8f9;
+}
+
+.noscroll{
+  overflow: hidden;
+}
+
+a{
+  text-decoration: none;
+}
+
+
+

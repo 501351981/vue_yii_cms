@@ -1,0 +1,7 @@
+/*
+* 查询相关样式
+*/
+.query .form-control + .btn {
+  margin-left: 10px;
+}
+/*# sourceMappingURL=query.css.map */
