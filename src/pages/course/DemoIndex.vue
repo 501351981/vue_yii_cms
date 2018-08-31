@@ -18,7 +18,7 @@
 
       <tr slot="row"  slot-scope="props">
         <td class="tc">{{props.index}}</td>
-        <td>{{props.item.name}}</td>
+        <td><router-link :to="'/demo/edit?id='+props.item.id" class="title">{{props.item.name}}</router-link></td>
       </tr>
 
 

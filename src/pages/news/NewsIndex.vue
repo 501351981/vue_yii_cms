@@ -30,7 +30,7 @@
         <tr slot="row"  slot-scope="props">
           <td class="tc">{{props.index}}</td>
           <td>{{props.item.category_text1}}</td>
-          <td>{{props.item.title}}</td>
+          <td><router-link :to="'/news/edit?id='+props.item.id" class="title">{{props.item.title}}</router-link></td>
           <td class="tc">{{props.item.view_count}}</td>
           <td class="status">
             <span v-if="props.item.status==0" class="btn btn-default btn-sm">前台隐藏</span>

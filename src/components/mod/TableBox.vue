@@ -432,6 +432,11 @@
             border-left: 1px solid transparent;
           }
 
+          a.title{
+            color: @brand-color;
+            font-weight: 600;
+          }
+
         }
         .tc{
           text-align: center;

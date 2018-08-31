@@ -18,7 +18,7 @@
           <td>
             <img :src="props.item.cover" width="50" height="50"/>
           </td>
-          <td>{{props.item.name}}</td>
+          <td><router-link :to="'/topic/edit?id='+props.item.id" class="title">{{props.item.name}}</router-link></td>
           <td>{{props.item.create_time}}</td>
         </tr>
 

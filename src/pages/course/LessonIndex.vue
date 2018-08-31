@@ -15,7 +15,7 @@
 
       <tr slot="row"  slot-scope="props">
         <td class="tc">{{props.index}}</td>
-        <td><span v-if="props.item.pid>0">&nbsp;&nbsp;&nbsp;&nbsp;|----</span>{{props.item.name}}</td>
+        <td><router-link :to="'/lesson/edit?id='+props.item.id" class="title"><span v-if="props.item.pid>0">&nbsp;&nbsp;&nbsp;&nbsp;|----</span>{{props.item.name}}</router-link></td>
         <td class="tc">{{props.item.viewnum}}</td>
         <td>{{props.item.sort}}</td>
       </tr>

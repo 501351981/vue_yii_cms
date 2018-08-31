@@ -67,7 +67,7 @@
       <div class="form-group">
         <label class="col-xs-2 control-label"><span class="required">*</span>作者：</label>
         <div class="col-xs-8">
-          <select class="form-control form-field" v-model="form.data.author">
+          <select class="form-control form-field" v-model="form.data.create_uid">
             <option value="">请选择作者</option>
             <option v-for="author in authors" :value="author.id">{{author.realname}}</option>
           </select>
@@ -108,7 +108,7 @@
             desc:'',
             playbill:'',
             seo_words:'',
-            author:''
+            create_uid:''
           },
           rules:{
             category_id1:{
@@ -129,7 +129,7 @@
             seo_words:{
               required:true
             },
-            author:{
+            create_uid:{
               required:true
             },
 
@@ -153,7 +153,7 @@
             seo_words:{
               required:"关键词不能为空"
             },
-            author:{
+            create_uid:{
               required:"作者不能为空"
             },
           }

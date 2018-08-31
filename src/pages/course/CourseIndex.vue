@@ -18,9 +18,9 @@
           <td>
             <img :src="props.item.cover" width="50" height="50"/>
           </td>
-          <td>{{props.item.name}}</td>
+          <td><router-link :to="'/course/edit?id='+props.item.id" class="title">{{props.item.name}}</router-link></td>
           <td class="tc">{{props.item.sort}}</td>
-          <td><a :href="'/lesson/index?cid='+props.item.id+'&cname='+props.item.name" class="btn btn-info btn-sm" target="_blank">管理课程</a></td>
+          <td><router-link :to="'/lesson/index?cid='+props.item.id+'&cname='+props.item.name" class="btn btn-info btn-sm">管理课程</router-link></td>
         </tr>
 
     </table-box>
@@ -65,7 +65,7 @@
             {
               title:"操作",
               field:"caozuo",
-              width:'80'
+              width:'100'
             },
           ],
           parseData:function (data) {

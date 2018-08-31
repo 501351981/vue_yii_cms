@@ -1,7 +1,7 @@
 <template>
   <div class="fix-btn-area">
     <div class="btn-area">
-      <ButtonBox class="btn-primary" @click="formSubmit">{{title}}</ButtonBox>
+      <button-box class="btn-primary" @click="formSubmit"  :loading-title="loadingTitle" ref="buttonBox">{{title}}</button-box>
       <slot></slot>
     </div>
   </div>
@@ -16,12 +16,22 @@
       title:{
         type:String,
         default:'保存'
+      },
+      loadingTitle:{
+        type:String,
+        default:'处理中...'
       }
     },
     methods:{
       formSubmit:function () {
         this.$emit('formSubmit')
-      }
+      },
+      showLoading:function () {
+        this.$refs.buttonBox.showLoading()
+      },
+      hideLoading:function () {
+        this.$refs.buttonBox.hideLoading()
+      },
     }
   }
 </script>

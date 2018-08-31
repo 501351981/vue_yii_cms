@@ -18,7 +18,7 @@
 
 
 
-      <form-submit @formSubmit="formSubmit"></form-submit>
+      <form-submit @formSubmit="formSubmit"  ref="btnSubmit"></form-submit>
     </form>
   </div>
 </template>
@@ -95,6 +95,8 @@
           return false
         }
 
+        this.$refs.btnSubmit.showLoading()
+
         form_data.old_password=md5(form_data.old_password)
         form_data.new_password=md5(form_data.new_password)
 
@@ -105,11 +107,13 @@
             title:"密码修改成功",
             type:'success'
           })
+          this.$refs.btnSubmit.hideLoading()
         }).catch((err)=>{
           this.$toast({
             title:err,
             type:'error'
           })
+          this.$refs.btnSubmit.hideLoading()
         })
       }
     }
