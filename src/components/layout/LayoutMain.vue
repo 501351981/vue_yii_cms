@@ -75,6 +75,7 @@
         network.post(api.logout).then(()=>{
           this.$router.push({path:config.login_path})
           authorize.clearToken()
+          this.$store.commit('CLEAR_USER_INFO')
         })
       }
     }

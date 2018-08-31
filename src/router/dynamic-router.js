@@ -114,6 +114,58 @@ const routes=[
       //以下为项目所需路由
 
       {
+        path: '/course/index',
+        name: 'course-index',
+        component: (resolve) => require(['@/pages/course/CourseIndex'], resolve),
+        meta:{requiresAuth:true},
+      },
+      {
+        path: '/course/edit',
+        name: 'course-edit',
+        component: (resolve) => require(['@/pages/course/CourseEdit'], resolve),
+        meta:{requiresAuth:true},
+      },
+
+      {
+        path: '/lesson/index',
+        name: 'lesson-index',
+        component: (resolve) => require(['@/pages/course/LessonIndex'], resolve),
+        meta:{requiresAuth:true},
+      },
+      {
+        path: '/lesson/edit',
+        name: 'lesson-edit',
+        component: (resolve) => require(['@/pages/course/LessonEdit'], resolve),
+        meta:{requiresAuth:true},
+      },
+
+      {
+        path: '/topic/index',
+        name: 'topic-index',
+        component: (resolve) => require(['@/pages/course/TopicIndex'], resolve),
+        meta:{requiresAuth:true},
+      },
+      {
+        path: '/topic/edit',
+        name: 'topic-edit',
+        component: (resolve) => require(['@/pages/course/TopicEdit'], resolve),
+        meta:{requiresAuth:true},
+      },
+      {
+        path: '/demo/index',
+        name: 'demo-index',
+        component: (resolve) => require(['@/pages/course/DemoIndex'], resolve),
+        meta:{requiresAuth:true},
+      },
+      {
+        path: '/demo/edit',
+        name: 'demo-edit',
+        component: (resolve) => require(['@/pages/course/DemoEdit'], resolve),
+        meta:{requiresAuth:true},
+      },
+
+
+      {
         path: '/vip/index',
         name: 'vip-index',
         component: (resolve) => require(['@/pages/vip/VipIndex'], resolve),

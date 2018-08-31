@@ -32,5 +32,18 @@ export default {
   upload_client:'https://upload.qiniup.com',//通过客户端直接上传到七牛云的接口地址
 
   //项目专有
-
+  course_index:'/adm/v1/course/index',
+  course_save:'/adm/v1/course/save',
+  course_detail:'/adm/v1/course/detail',
+  lesson_index:'/adm/v1/course/lesson-index',
+  lesson_save:'/adm/v1/course/lesson-save',
+  lesson_detail:'/adm/v1/course/lesson-detail',
+  topic_index:'/adm/v1/course/topic-index',
+  topic_save:'/adm/v1/course/topic-save',
+  topic_detail:'/adm/v1/course/topic-detail',
+  get_topic_news:'/adm/v1/course/get-topic-news',
+  topic_news_save:'/adm/v1/course/topic-news-save',
+  demo_index:'/adm/v1/course/demo-index',
+  demo_save:'/adm/v1/course/demo-save',
+  demo_detail:'/adm/v1/course/demo-detail',
 }

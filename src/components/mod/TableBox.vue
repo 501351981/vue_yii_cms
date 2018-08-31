@@ -84,6 +84,11 @@
         default:false
       }
     },
+    watch:{
+      data:function (newdata) {
+        this.requestData(this.page)
+      }
+    },
     data:function () {
       return {
         items:[],

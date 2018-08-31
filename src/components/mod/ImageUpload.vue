@@ -102,6 +102,7 @@
         tempArray[index-1]=temp_data
 
         this.images=tempArray
+        this.emitInput()
       },
       deleteItem:function (index) {
         let tempArray=[]
@@ -112,6 +113,7 @@
         }
 
         this.images=tempArray
+        this.emitInput()
       },
       toright:function (index) {
         if(index==this.images.length-1){
@@ -124,6 +126,7 @@
         tempArray[index+1]=temp_data
 
         this.images=tempArray
+        this.emitInput()
       },
       selectFile:function () {
         this.$refs.fileSelect.click()
@@ -192,8 +195,9 @@
 
   .image-upload-view{
     list-style: none;
-    float: left;
-
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
     li{
       width: 118px;
       height: 118px;
@@ -202,7 +206,6 @@
       border: 1px solid #ccc;
       border-radius: 0;
       display: block;
-      float: left;
       cursor: pointer;
       position: relative;
     }

@@ -12,6 +12,11 @@ const message={
 
 const check={
   required:function(data){
+    if(parseFloat(data).toString() != "NaN"){
+      return true
+    }
+    data=data.replace(/\s+/g,"")
+
     if(data!=''&&data!=null&&data!=undefined){
       return true
     }

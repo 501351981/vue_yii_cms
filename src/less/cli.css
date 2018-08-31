@@ -113,4 +113,55 @@
 .ml20 {
   margin-left: 20px;
 }
+.mr5 {
+  margin-right: 5px;
+}
+.mr10 {
+  margin-right: 10px;
+}
+.mr15 {
+  margin-right: 15px;
+}
+.mr20 {
+  margin-right: 20px;
+}
+.f12 {
+  font-size: 12px;
+}
+.f13 {
+  font-size: 13px;
+}
+.f14 {
+  font-size: 14px;
+}
+.f15 {
+  font-size: 15px;
+}
+.f16 {
+  font-size: 16px;
+}
+.f18 {
+  font-size: 18px;
+}
+.f20 {
+  font-size: 20px;
+}
+.f24 {
+  font-size: 24px;
+}
+.f26 {
+  font-size: 26px;
+}
+lh18 {
+  line-height: 18px;
+}
+lh20 {
+  line-height: 20px;
+}
+lh24 {
+  line-height: 24px;
+}
+lh30 {
+  line-height: 30px;
+}
 /*# sourceMappingURL=cli.css.map */

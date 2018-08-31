@@ -12,6 +12,12 @@ function toLogin(redirect={go: -1}) {
     query:redirect
   })
 }
+
+function toForbidden() {
+  router.push({
+    path: config.forbidden_path
+  })
+}
 /*
 * check_login，请求数据之前，是否需要检查登录状态，如果登录已过期，则需要重新登录，然后再请求数据
 */
@@ -67,6 +73,9 @@ function request(url,data,method='get') {
       }else if(res.code=='401'){
         toLogin()
         reject("登录过期，请先登录")
+      }else if(res.code=='403'){
+        toForbidden()
+        reject("却少权限")
       }else if(res.code=='99'){
         reject(res.msg)
       }else {

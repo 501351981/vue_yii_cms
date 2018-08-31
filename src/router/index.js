@@ -15,17 +15,20 @@ export default new Router({
     {
       path: '/site/login',
       name: 'login',
-      component: Login
+      component: Login,
+      meta:{requiresAuth:false},
     },
     {
       path: '/404',
       name: '404',
-      component:NoFind
+      component:NoFind,
+      meta:{requiresAuth:false},
     },
     {
       path: '/403',
       name: '403',
-      component:Forbidden
+      component:Forbidden,
+      meta:{requiresAuth:false},
     },
 
 

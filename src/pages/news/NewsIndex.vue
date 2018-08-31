@@ -31,6 +31,7 @@
           <td class="tc">{{props.index}}</td>
           <td>{{props.item.category_text1}}</td>
           <td>{{props.item.title}}</td>
+          <td class="tc">{{props.item.view_count}}</td>
           <td class="status">
             <span v-if="props.item.status==0" class="btn btn-default btn-sm">前台隐藏</span>
             <span v-if="props.item.recommend_ok==1" class="btn btn-primary btn-sm">已推荐</span>
@@ -76,6 +77,11 @@
               title:"标题",
               field:"title",
               width:'300'
+            },
+            {
+              title:"浏览量",
+              field:"view_count",
+              width:'80'
             },
             {
               title:"状态",

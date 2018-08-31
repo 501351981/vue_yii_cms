@@ -533,6 +533,9 @@ select[multiple].input-lg {
   width: 100%;
   margin: 20px 0;
 }
+.form-edit label.info {
+  color: #555555;
+}
 fieldset legend {
   line-height: 40px;
 }

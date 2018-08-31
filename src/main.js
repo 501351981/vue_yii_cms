@@ -21,34 +21,32 @@ Vue.use(confirmRegistry)
 
 router.beforeEach(async (to,from,next)=>{
 
-  if(to.path==config.login_path){
-    //登录页面直接通过
+  if(to.meta.requiresAuth===false){
+    //不需要登录的直接放行
     next()
+  }else if(!authorize.checkLogin()){
+    //如果页面需要登录，且登录失效，进入登录页面
+    next({
+      path:config.login_path,
+      query: { redirect: to.fullPath }
+    })
   }else {
-    if(to.meta.requiresAuth&&!authorize.checkLogin()){
-      //如果页面需要登录，且登录失效，进入登录页面
-      next({
-        path:config.login_path,
-        query: { redirect: to.fullPath }
+    //已经登录
+    //是否已经拉取menu，权限等信息
+    if(!store.state.menu_loaded){
+      //如果页面还没有拉取menu
+      await netwrok.post(api.get_user_info,'',true).then((res)=>{
+        store.commit('SET_USER_INFO',res)
+        let dy_routers=dynamicRouter.generateRouteByPermision(dynamicRouter.routes,res.permission);
+        router.addRoutes(dy_routers)
+
       })
-    }else {
-      if(!store.state.menu_loaded){
-        //如果页面还没有拉取menu
-       await netwrok.post(api.get_user_info,'',true).then((res)=>{
-          store.commit('SET_USER_INFO',res)
-          let dy_routers=dynamicRouter.generateRouteByPermision(dynamicRouter.routes,res.permission);
-          router.addRoutes(dy_routers)
+      next({ ...to, replace: true })
 
-        })
-        next({ ...to, replace: true })
-        return
-
-      }else{
-        next()
-      }
-
-
+    }else{
+      next()
     }
+
   }
 
 })
