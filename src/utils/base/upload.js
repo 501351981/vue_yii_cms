@@ -41,6 +41,7 @@ function uploadfile(file,options={}) {
     method:'post',
     data:formdata,
     headers:{
+      'Authorization':'Bearer ' +authorize.getToken(),
       'Content-Type':'multipart/form-data'
     },
   }).then((res)=>{

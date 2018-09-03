@@ -839,7 +839,7 @@ var CodeMirror = (function() {
             // to be showing (which will cover the visible display)
             var different = from != showingFrom || to != showingTo || lastSizeC != scroller.clientHeight + th;
             // This is just a bogus formula that detects when the editor is
-            // resized or the font size changes.
+            // resized or the fonts size changes.
             if (different) lastSizeC = scroller.clientHeight + th;
             showingFrom = from; showingTo = to;
             displayOffset = heightAtLine(doc, from);

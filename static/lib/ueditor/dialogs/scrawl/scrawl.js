@@ -420,7 +420,7 @@ var ScaleBoy = function () {
         var doc = document,
             head = doc.getElementsByTagName('head')[0],
             style = doc.createElement('style'),
-            cssText = '.scale{visibility:hidden;cursor:move;position:absolute;left:0;top:0;width:100px;height:50px;background-color:#fff;font-size:0;line-height:0;opacity:.4;filter:Alpha(opacity=40);}'
+            cssText = '.scale{visibility:hidden;cursor:move;position:absolute;left:0;top:0;width:100px;height:50px;background-color:#fff;fonts-size:0;line-height:0;opacity:.4;filter:Alpha(opacity=40);}'
                 + '.scale span{position:absolute;left:0;top:0;width:6px;height:6px;background-color:#006DAE;}'
                 + '.scale .hand0, .scale .hand7{cursor:nw-resize;}'
                 + '.scale .hand1, .scale .hand6{left:50%;margin-left:-3px;cursor:n-resize;}'

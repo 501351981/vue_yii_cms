@@ -15,7 +15,7 @@ e.g. <video class="video-js my-skin-name">
 }
 /* Custom Icon Font
 --------------------------------------------------------------------------------
-The control icons are from a custom font. Each icon corresponds to a character
+The control icons are from a custom fonts. Each icon corresponds to a character
 (e.g. "\e001"). Font icons allow for easy scaling and coloring of icons.
 */
 @font-face {
@@ -266,8 +266,8 @@ fonts to show/hide properly.
   transition: all 0.4s;
 }
 /* On hover, make the progress bar grow to something that's more clickable.
-    This simply changes the overall font for the progress bar, and this
-    updates both the em-based widths and heights, as wells as the icon font */
+    This simply changes the overall fonts for the progress bar, and this
+    updates both the em-based widths and heights, as wells as the icon fonts */
 .vjs-default-skin:hover .vjs-progress-control {
   font-size: .9em;
   /* Even though we're not changing the top/height, we need to include them in
@@ -630,7 +630,7 @@ control positioning and full window mode. **
   background-color: #000;
   position: relative;
   padding: 0;
-  /* Start with 10px for base font size so other dimensions can be em based and
+  /* Start with 10px for base fonts size so other dimensions can be em based and
      easily calculable. */
 
   font-size: 10px;

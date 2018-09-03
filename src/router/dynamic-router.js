@@ -65,6 +65,7 @@ const routes=[
         meta:{requiresAuth:true},
       },
 
+
       {
         path: '/member/index',
         name: 'member-index',

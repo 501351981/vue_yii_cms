@@ -2651,10 +2651,10 @@ var domUtils = dom.domUtils = {
      * @return { Boolean } 两个节点是否具有相同的标签名、属性名以及属性值
      * @example
      * ```html
-     * <span style="font-size:12px">ssss</span>
-     * <span style="font-size:12px">bbbbb</span>
-     * <span style="font-size:13px">ssss</span>
-     * <span style="font-size:14px">bbbbb</span>
+     * <span style="fonts-size:12px">ssss</span>
+     * <span style="fonts-size:12px">bbbbb</span>
+     * <span style="fonts-size:13px">ssss</span>
+     * <span style="fonts-size:14px">bbbbb</span>
      *
      * <script>
      *
@@ -2726,10 +2726,10 @@ var domUtils = dom.domUtils = {
      * @return { Boolean } 两个节点是否具有相同的style属性值
      * @example
      * ```html
-     * <span style="font-size:12px">ssss</span>
-     * <span style="font-size:12px">bbbbb</span>
-     * <span style="font-size:13px">ssss</span>
-     * <span style="font-size:14px">bbbbb</span>
+     * <span style="fonts-size:12px">ssss</span>
+     * <span style="fonts-size:12px">bbbbb</span>
+     * <span style="fonts-size:13px">ssss</span>
+     * <span style="fonts-size:14px">bbbbb</span>
      *
      * <script>
      *
@@ -2958,9 +2958,9 @@ var domUtils = dom.domUtils = {
      * @desc
      * UE.dom.domUtils.mergeChild(node,tagName) //tagName要合并的子节点的标签
      * @example
-     * <p><span style="font-size:12px;">xx<span style="font-size:12px;">aa</span>xx</span></p>
+     * <p><span style="fonts-size:12px;">xx<span style="fonts-size:12px;">aa</span>xx</span></p>
      * ==> UE.dom.domUtils.mergeChild(node,'span')
-     * <p><span style="font-size:12px;">xxaaxx</span></p>
+     * <p><span style="fonts-size:12px;">xxaaxx</span></p>
      */
     mergeChild:function (node, tagName, attrs) {
         var list = domUtils.getElementsByTagName(node, node.tagName.toLowerCase());
@@ -3196,14 +3196,14 @@ var domUtils = dom.domUtils = {
      * @example
      * ```html
      * <div id="wrap">
-     *      <span style="font-size:14px;" id="test" name="followMe">xxxxx</span>
+     *      <span style="fonts-size:14px;" id="test" name="followMe">xxxxx</span>
      * </div>
      *
      * <script>
      *
      *     UE.dom.domUtils.removeAttributes( document.getElementById( "test" ), "id name" );
      *
-     *     //output: <span style="font-size:14px;">xxxxx</span>
+     *     //output: <span style="fonts-size:14px;">xxxxx</span>
      *     console.log( document.getElementById("wrap").innerHTML );
      *
      * </script>
@@ -3218,14 +3218,14 @@ var domUtils = dom.domUtils = {
      * @example
      * ```html
      * <div id="wrap">
-     *      <span style="font-size:14px;" id="test" name="followMe">xxxxx</span>
+     *      <span style="fonts-size:14px;" id="test" name="followMe">xxxxx</span>
      * </div>
      *
      * <script>
      *
      *     UE.dom.domUtils.removeAttributes( document.getElementById( "test" ), ["id", "name"] );
      *
-     *     //output: <span style="font-size:14px;">xxxxx</span>
+     *     //output: <span style="fonts-size:14px;">xxxxx</span>
      *     console.log( document.getElementById("wrap").innerHTML );
      *
      * </script>
@@ -3329,7 +3329,7 @@ var domUtils = dom.domUtils = {
      * ```html
      * <style type="text/css">
      *      #test {
-     *          font-size: 15px;
+     *          fonts-size: 15px;
      *      }
      * </style>
      *
@@ -3337,7 +3337,7 @@ var domUtils = dom.domUtils = {
      *
      * <script>
      *     //output: 15px
-     *     console.log( UE.dom.domUtils.getComputedStyle( document.getElementById( "test" ), 'font-size' ) );
+     *     console.log( UE.dom.domUtils.getComputedStyle( document.getElementById( "test" ), 'fonts-size' ) );
      * </script>
      * ```
      */
@@ -3353,10 +3353,10 @@ var domUtils = dom.domUtils = {
             element = element.parentNode;
         }
         //ie下font-size若body下定义了font-size，则从currentStyle里会取到这个font-size. 取不到实际值，故此修改.
-        if (browser.ie && browser.version < 9 && styleName == 'font-size' && !element.style.fontSize &&
+        if (browser.ie && browser.version < 9 && styleName == 'fonts-size' && !element.style.fontSize &&
             !dtd.$empty[element.tagName] && !dtd.$nonChild[element.tagName]) {
             var span = element.ownerDocument.createElement('span');
-            span.style.cssText = 'padding:0;border:0;font-family:simsun;';
+            span.style.cssText = 'padding:0;border:0;fonts-family:simsun;';
             span.innerHTML = '.';
             element.appendChild(span);
             var result = span.offsetHeight;
@@ -5485,11 +5485,11 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
          * ==>
          *
          * <!-- 执行操作 -->
-         * range.applyInlineStyle("strong",{"style":"font-size:12px"})
+         * range.applyInlineStyle("strong",{"style":"fonts-size:12px"})
          *
          * ==>
          *
-         * <p>xxxx[<strong style="font-size:12px">xxxx</strong>]x</p>
+         * <p>xxxx[<strong style="fonts-size:12px">xxxx</strong>]x</p>
          * ```
          */
         applyInlineStyle:function (tagName, attrs, list) {
@@ -6899,8 +6899,8 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
                     //设置四周的留边
                     '.view{padding:0;word-wrap:break-word;cursor:text;height:90%;}\n' +
                     //设置默认字体和字号
-                    //font-family不能呢随便改，在safari下fillchar会有解析问题
-                    'body{margin:8px;font-family:微软雅黑,Microsoft YaHei;font-size:16px;' +
+                    //fonts-family不能呢随便改，在safari下fillchar会有解析问题
+                    'body{margin:8px;fonts-family:微软雅黑,Microsoft YaHei;fonts-size:16px;' +
                     //设置段落间距
                     'p{margin:5px 0;}</style>' +
                     ( options.iframeCssUrl ? '<link rel=\'stylesheet\' type=\'text/css\' href=\'' + utils.unhtml(options.iframeCssUrl) + '\'/>' : '' ) +
@@ -8514,7 +8514,7 @@ var filterWord = UE.filterWord = function () {
                                     n[i] = "vertical-align:" + value;
                                     continue;
 
-                                case "font-color":
+                                case "fonts-color":
                                 case "mso-foreground":
                                     n[i] = "color:" + value;
                                     continue;
@@ -8609,7 +8609,7 @@ var filterWord = UE.filterWord = function () {
      * var node = new uNode({
      *     type:'element',
      *     tagName:'span',
-     *     attrs:{style:'font-size:14px;'}
+     *     attrs:{style:'fonts-size:14px;'}
      * }
      * ```
      */
@@ -9262,7 +9262,7 @@ var filterWord = UE.filterWord = function () {
          * @return { String } 返回样式值
          * @example
          * ```javascript
-         * node.getStyle('font-size');
+         * node.getStyle('fonts-size');
          * ```
          */
         getStyle:function (name) {
@@ -9285,7 +9285,7 @@ var filterWord = UE.filterWord = function () {
          * @param { String } val 要设置的的样值
          * @example
          * ```javascript
-         * node.setStyle('font-size', '12px');
+         * node.setStyle('fonts-size', '12px');
          * ```
          */
         setStyle:function (name, val) {
@@ -10538,16 +10538,16 @@ UE.plugins['autotypeset'] = function(){
             if(me.fireEvent('excludeNodeinautotype',ci) === true){
                 continue;
             }
-             //font-size
+             //fonts-size
             if(opt.clearFontSize && ci.style.fontSize){
-                domUtils.removeStyle(ci,'font-size');
+                domUtils.removeStyle(ci,'fonts-size');
 
                 removeNotAttributeSpan(ci);
 
             }
-            //font-family
+            //fonts-family
             if(opt.clearFontFamily && ci.style.fontFamily){
-                domUtils.removeStyle(ci,'font-family');
+                domUtils.removeStyle(ci,'fonts-family');
                 removeNotAttributeSpan(ci);
             }
 
@@ -11269,7 +11269,7 @@ UE.plugins['justify']=function(){
 };
 
 
-// plugins/font.js
+// plugins/fonts.js
 /**
  * 字体颜色,背景色,字号,字体,下划线,删除线
  * @file
@@ -11406,8 +11406,8 @@ UE.plugins['font'] = function () {
         fonts = {
             'forecolor': 'color',
             'backcolor': 'background-color',
-            'fontsize': 'font-size',
-            'fontfamily': 'font-family',
+            'fontsize': 'fonts-size',
+            'fontfamily': 'fonts-family',
             'underline': 'text-decoration',
             'strikethrough': 'text-decoration',
             'fontborder': 'border'
@@ -11416,8 +11416,8 @@ UE.plugins['font'] = function () {
         needSetChild = {
             'forecolor': 'color',
             'backcolor': 'background-color',
-            'fontsize': 'font-size',
-            'fontfamily': 'font-family'
+            'fontsize': 'fonts-size',
+            'fontfamily': 'fonts-family'
 
         };
     me.setOpt({
@@ -11534,13 +11534,13 @@ UE.plugins['font'] = function () {
     }
 
     me.addInputRule(function (root) {
-        utils.each(root.getNodesByTagName('u s del font strike'), function (node) {
+        utils.each(root.getNodesByTagName('u s del fonts strike'), function (node) {
             if (node.tagName == 'font') {
                 var cssStyle = [];
                 for (var p in node.attrs) {
                     switch (p) {
                         case 'size':
-                            cssStyle.push('font-size:' +
+                            cssStyle.push('fonts-size:' +
                                 ({
                                 '1':'10',
                                 '2':'12',
@@ -11555,7 +11555,7 @@ UE.plugins['font'] = function () {
                             cssStyle.push('color:' + node.attrs[p]);
                             break;
                         case 'face':
-                            cssStyle.push('font-family:' + node.attrs[p]);
+                            cssStyle.push('fonts-family:' + node.attrs[p]);
                             break;
                         case 'style':
                             cssStyle.push(node.attrs[p]);
@@ -12030,7 +12030,7 @@ UE.commands['scrawl'] = {
 UE.plugins['removeformat'] = function(){
     var me = this;
     me.setOpt({
-       'removeFormatTags': 'b,big,code,del,dfn,em,font,i,ins,kbd,q,samp,small,span,strike,strong,sub,sup,tt,u,var',
+       'removeFormatTags': 'b,big,code,del,dfn,em,fonts,i,ins,kbd,q,samp,small,span,strike,strong,sub,sup,tt,u,var',
        'removeFormatAttributes':'class,style,lang,width,height,align,hspace,valign'
     });
     me.commands['removeformat'] = {
@@ -15155,7 +15155,7 @@ UE.plugins['list'] = function () {
                 };
             function checkListType(content,container){
                 var span = container.firstChild();
-                if(span &&  span.type == 'element' && span.tagName == 'span' && /Wingdings|Symbol/.test(span.getStyle('font-family'))){
+                if(span &&  span.type == 'element' && span.tagName == 'span' && /Wingdings|Symbol/.test(span.getStyle('fonts-family'))){
                     for(var p in unorderlisttype){
                         if(unorderlisttype[p] == span.data){
                             return p
@@ -16187,7 +16187,7 @@ UE.plugins['list'] = function () {
                 lineWrapping:true
             });
             var dom = codeEditor.getWrapperElement();
-            dom.style.cssText = 'position:absolute;left:0;top:0;width:100%;height:100%;font-family:consolas,"Courier new",monospace;font-size:13px;';
+            dom.style.cssText = 'position:absolute;left:0;top:0;width:100%;height:100%;fonts-family:consolas,"Courier new",monospace;fonts-size:13px;';
             codeEditor.getScrollerElement().style.cssText = 'position:absolute;left:0;top:0;width:100%;height:100%;';
             codeEditor.refresh();
             return {
@@ -16889,7 +16889,7 @@ UE.plugins['fiximgclick'] = (function () {
             },
             initStyle: function () {
                 utils.cssRule('imagescale', '.edui-editor-imagescale{display:none;position:absolute;border:1px solid #38B2CE;cursor:hand;-webkit-box-sizing: content-box;-moz-box-sizing: content-box;box-sizing: content-box;}' +
-                    '.edui-editor-imagescale span{position:absolute;width:6px;height:6px;overflow:hidden;font-size:0px;display:block;background-color:#3C9DD0;}'
+                    '.edui-editor-imagescale span{position:absolute;width:6px;height:6px;overflow:hidden;fonts-size:0px;display:block;background-color:#3C9DD0;}'
                     + '.edui-editor-imagescale .edui-editor-imagescale-hand0{cursor:nw-resize;top:0;margin-top:-4px;left:0;margin-left:-4px;}'
                     + '.edui-editor-imagescale .edui-editor-imagescale-hand1{cursor:n-resize;top:0;margin-top:-4px;left:50%;margin-left:-4px;}'
                     + '.edui-editor-imagescale .edui-editor-imagescale-hand2{cursor:ne-resize;top:0;margin-top:-4px;left:100%;margin-left:-3px;}'
@@ -22990,10 +22990,10 @@ UE.plugin.register('searchreplace',function(){
 UE.plugins['customstyle'] = function() {
     var me = this;
     me.setOpt({ 'customstyle':[
-        {tag:'h1',name:'tc', style:'font-size:32px;font-weight:bold;border-bottom:#ccc 2px solid;padding:0 4px 0 0;text-align:center;margin:0 0 20px 0;'},
-        {tag:'h1',name:'tl', style:'font-size:32px;font-weight:bold;border-bottom:#ccc 2px solid;padding:0 4px 0 0;text-align:left;margin:0 0 10px 0;'},
-        {tag:'span',name:'im', style:'font-size:16px;font-style:italic;font-weight:bold;line-height:18px;'},
-        {tag:'span',name:'hi', style:'font-size:16px;font-style:italic;font-weight:bold;color:rgb(51, 153, 204);line-height:18px;'}
+        {tag:'h1',name:'tc', style:'fonts-size:32px;fonts-weight:bold;border-bottom:#ccc 2px solid;padding:0 4px 0 0;text-align:center;margin:0 0 20px 0;'},
+        {tag:'h1',name:'tl', style:'fonts-size:32px;fonts-weight:bold;border-bottom:#ccc 2px solid;padding:0 4px 0 0;text-align:left;margin:0 0 10px 0;'},
+        {tag:'span',name:'im', style:'fonts-size:16px;fonts-style:italic;fonts-weight:bold;line-height:18px;'},
+        {tag:'span',name:'hi', style:'fonts-size:16px;fonts-style:italic;fonts-weight:bold;color:rgb(51, 153, 204);line-height:18px;'}
     ]});
     me.commands['customstyle'] = {
         execCommand : function(cmdName, obj) {
@@ -24840,7 +24840,7 @@ UE.plugin.register('insertfile', function (){
                         title = item.title || item.url.substr(item.url.lastIndexOf('/') + 1);
                         html += '<p style="line-height: 16px;">' +
                             '<img style="vertical-align: middle; margin-right: 2px;" src="'+ icon + '" _src="' + icon + '" />' +
-                            '<a style="font-size:12px; color:#0066cc;" href="' + item.url +'" title="' + title + '">' + title + '</a>' +
+                            '<a style="fonts-size:12px; color:#0066cc;" href="' + item.url +'" title="' + title + '">' + title + '</a>' +
                             '</p>';
                     }
                     me.execCommand('insertHtml', html);
@@ -25597,11 +25597,11 @@ UE.ui = baidu.editor.ui = {};
             '<div unselectable="on" class="edui-colorpicker-nocolor" onclick="$$._onPickNoColor(event, this);">'+ noColorText +'</div>' +
             '</div>' +
             '<table  class="edui-box" style="border-collapse: collapse;" onmouseover="$$._onTableOver(event, this);" onmouseout="$$._onTableOut(event, this);" onclick="return $$._onTableClick(event, this);" cellspacing="0" cellpadding="0">' +
-            '<tr style="border-bottom: 1px solid #ddd;font-size: 13px;line-height: 25px;color:#39C;padding-top: 2px"><td colspan="10">'+editor.getLang("themeColor")+'</td> </tr>'+
+            '<tr style="border-bottom: 1px solid #ddd;fonts-size: 13px;line-height: 25px;color:#39C;padding-top: 2px"><td colspan="10">'+editor.getLang("themeColor")+'</td> </tr>'+
             '<tr class="edui-colorpicker-tablefirstrow" >';
         for (var i=0; i<COLORS.length; i++) {
             if (i && i%10 === 0) {
-                html += '</tr>'+(i==60?'<tr style="border-bottom: 1px solid #ddd;font-size: 13px;line-height: 25px;color:#39C;"><td colspan="10">'+editor.getLang("standardColor")+'</td></tr>':'')+'<tr'+(i==60?' class="edui-colorpicker-tablefirstrow"':'')+'>';
+                html += '</tr>'+(i==60?'<tr style="border-bottom: 1px solid #ddd;fonts-size: 13px;line-height: 25px;color:#39C;"><td colspan="10">'+editor.getLang("standardColor")+'</td></tr>':'')+'<tr'+(i==60?' class="edui-colorpicker-tablefirstrow"':'')+'>';
             }
             html += i<70 ? '<td style="padding: 0 2px;"><a hidefocus title="'+COLORS[i]+'" onclick="return false;" href="javascript:" unselectable="on" class="edui-box edui-colorpicker-colorcell"' +
                 ' data-color="#'+ COLORS[i] +'"'+
@@ -28137,7 +28137,7 @@ UE.ui = baidu.editor.ui = {};
                     value:val,
                     theme:editor.options.theme,
                     renderLabelHtml:function () {
-                        return '<div class="edui-label %%-label" style="font-family:' +
+                        return '<div class="edui-label %%-label" style="fonts-family:' +
                             utils.unhtml(this.value) + '">' + (this.label || '') + '</div>';
                     }
                 });
@@ -28198,7 +28198,7 @@ UE.ui = baidu.editor.ui = {};
                 value:size,
                 theme:editor.options.theme,
                 renderLabelHtml:function () {
-                    return '<div class="edui-label %%-label" style="line-height:1;font-size:' +
+                    return '<div class="edui-label %%-label" style="line-height:1;fonts-size:' +
                         this.value + '">' + (this.label || '') + '</div>';
                 }
             });

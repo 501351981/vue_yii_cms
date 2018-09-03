@@ -216,10 +216,10 @@
         //style 添加的样式
         //每一个对象就是一个自定义的样式
       ,'customstyle':[
-        {tag:'h1', name:'title', label:'段落主标题', style:'color: #3d464d;font-size: 18px;font-weight: 600;'},
-        {tag:'h2', name:'title2', label:'段落副标题', style:'color: #3d464d;font-size: 16px;font-weight: 600;'},
-        {tag:'p',name:'pic', label:'图片说明', style:'color: rgb(127, 127, 127); font-size: 14px;text-align:center'},
-        {tag:'span',name:'test', label:'ceshi', style:'color: rgb(127, 127, 127); font-size: 14px;text-align:center'}
+        {tag:'h1', name:'title', label:'段落主标题', style:'color: #3d464d;fonts-size: 18px;fonts-weight: 600;'},
+        {tag:'h2', name:'title2', label:'段落副标题', style:'color: #3d464d;fonts-size: 16px;fonts-weight: 600;'},
+        {tag:'p',name:'pic', label:'图片说明', style:'color: rgb(127, 127, 127); fonts-size: 14px;text-align:center'},
+        {tag:'span',name:'test', label:'ceshi', style:'color: rgb(127, 127, 127); fonts-size: 14px;text-align:center'}
       ]
 
         //打开右键菜单功能
@@ -260,7 +260,7 @@
         //removeFormat
         //清除格式时可以删除的标签和属性
         //removeForamtTags标签
-        //,removeFormatTags:'b,big,code,del,dfn,em,font,i,ins,kbd,q,samp,small,span,strike,strong,sub,sup,tt,u,var'
+        //,removeFormatTags:'b,big,code,del,dfn,em,fonts,i,ins,kbd,q,samp,small,span,strike,strong,sub,sup,tt,u,var'
         //removeFormatAttributes属性
         //,removeFormatAttributes:'class,style,lang,width,height,align,hspace,valign'
 

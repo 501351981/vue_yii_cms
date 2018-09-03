@@ -186,8 +186,8 @@ div.edui-box {
 }
 
 .edui-default .edui-editor-iframeholder textarea {
-    font-family: consolas, "Courier New", "lucida console", monospace;
-    font-size: 12px;
+    fonts-family: consolas, "Courier New", "lucida console", monospace;
+    fonts-size: 12px;
     line-height: 18px;
 }
 

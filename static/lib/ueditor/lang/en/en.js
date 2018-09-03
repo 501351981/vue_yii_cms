@@ -226,7 +226,7 @@ UE.I18N['en'] = {
         'indent':"Indent",
         'alignment':"Alignment",
         'imageFloat':"Image float",
-        'removeFontsize':"Remove font size",
+        'removeFontsize':"Remove fonts size",
         'removeFontFamily':"Remove fontFamily",
         'removeHtml':"Remove redundant HTML code",
         'pasteFilter':"Paste filter",
@@ -661,8 +661,8 @@ UE.I18N['en'] = {
 
         'flashI18n':{
             lang:encodeURI( '{"UploadingState":"totalNum: ${a},uploadComplete: ${b}", "BeforeUpload":"waitingNum: ${a}", "ExceedSize":"Size exceed${a}", "ErrorInPreview":"Preview failed", "DefaultDescription":"Description", "LoadingImage":"Loading..."}' ),
-            uploadingTF:encodeURI( '{"font":"Arial", "size":12, "color":"0x000", "bold":"true", "italic":"false", "underline":"false"}' ),
-            imageTF:encodeURI( '{"font":"Arial", "size":11, "color":"red", "bold":"false", "italic":"false", "underline":"false"}' ),
+            uploadingTF:encodeURI( '{"fonts":"Arial", "size":12, "color":"0x000", "bold":"true", "italic":"false", "underline":"false"}' ),
+            imageTF:encodeURI( '{"fonts":"Arial", "size":11, "color":"red", "bold":"false", "italic":"false", "underline":"false"}' ),
             textEncoding:"utf-8",
             addImageSkinURL:"addImage.png",
             allDeleteBtnUpSkinURL:"allDeleteBtnUpSkin.png",
