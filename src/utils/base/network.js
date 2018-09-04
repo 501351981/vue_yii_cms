@@ -53,7 +53,10 @@ function request(url,data,method='get') {
     axios.request({
       url: api.baseUrl+url,
       method:method,
-      params:params,
+      params:{
+        ...params,
+        access_token:authorize.getToken()
+      },
       data:post_data,
 
       transformRequest: [function (data) {
@@ -61,7 +64,6 @@ function request(url,data,method='get') {
       }],
 
       headers:{
-        'Authorization':'Bearer ' +authorize.getToken(),
         'Content-Type':'application/x-www-form-urlencoded'
       },
       onUploadProgress:'',
@@ -75,7 +77,7 @@ function request(url,data,method='get') {
         reject("登录过期，请先登录")
       }else if(res.code=='403'){
         toForbidden()
-        reject("却少权限")
+        reject("缺少权限")
       }else if(res.code=='99'){
         reject(res.msg)
       }else {

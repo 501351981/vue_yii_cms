@@ -3,10 +3,10 @@ import config from '../config/config'
 /*
 * 保存登录信息至本地缓存
 */
-function saveToken(token) {
+function saveToken(token,expires) {
   localStorage.token=JSON.stringify({
     token:token,
-    expires: Date.parse(new Date()) + config.expires*1000
+    expires: expires*1000
   })
 }
 

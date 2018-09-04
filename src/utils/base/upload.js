@@ -39,9 +39,11 @@ function uploadfile(file,options={}) {
   axios.request({
     url: api.baseUrl+url,
     method:'post',
+    params:{
+      access_token:authorize.getToken()
+    },
     data:formdata,
     headers:{
-      'Authorization':'Bearer ' +authorize.getToken(),
       'Content-Type':'multipart/form-data'
     },
   }).then((res)=>{

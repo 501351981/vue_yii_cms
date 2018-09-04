@@ -13,7 +13,8 @@
     name:'Ueditor',
     data:function () {
       return{
-        editor:''
+        editor:'',
+        content:''
       }
     },
     props: {
@@ -31,8 +32,10 @@
 
     },
     watch:{
-      value:function() {
-        this.editor.setContent(this.value);
+      value:function(new_content) {
+        if(new_content!=this.content){
+          this.editor.setContent(this.value);
+        }
       }
     },
     mounted:function () {
@@ -41,7 +44,8 @@
         this.editor.setContent(this.value); // 确保UE加载完成后，放入内容。
 
         this.editor.addListener("contentChange",()=>{
-          this.$emit('input',this.editor.getContent())
+          this.content=this.editor.getContent()
+          this.$emit('input', this.content)
         })
       });
     },

@@ -73,7 +73,7 @@
         network.post(api.login,post_data).then(res=>{
 
           //保存token
-          authorize.saveToken(res.token)
+          authorize.saveToken(res.token,res.expires)
 
           //跳转
           if(typeof(this.$route.query.redirect)!="undefined"){
