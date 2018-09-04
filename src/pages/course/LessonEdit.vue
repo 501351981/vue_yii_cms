@@ -173,7 +173,7 @@
           this.$toast({
             title:"保存成功"
           })
-          this.$router.push('/lesson/index?cid='+this.cid+'&cname='+this.cname)
+          this.$router.go(-1)
         })
       }
     }
