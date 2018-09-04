@@ -20,6 +20,12 @@
     methods:{
       toggle:function (e) {
         this.isshow = ! this.isshow
+      },
+      show:function () {
+        this.isshow =true
+      },
+      hide:function () {
+        this.isshow =false
       }
     }
   }

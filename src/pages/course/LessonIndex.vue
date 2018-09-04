@@ -95,6 +95,8 @@
       this.$store.commit('SET_BREADCRUMB',breadcrumb)
       this.cname=this.$route.query.cname
       this.cid=this.$route.query.cid
+
+      console.log('mounted')
     },
     methods:{
       editItem:function () {
@@ -143,7 +145,18 @@
 
 
 
+    },
+    activated:function () {
+      //此部分是为了处理缓存，如果缓存页面和当前页面cid不一致，则重新请求数据
+      let new_url=api.lesson_index+'?cid='+this.$route.query.cid
+      if(this.table.url!=new_url){
+        this.table.url=new_url
+        this.$refs.tableBox.urlIn=new_url
+        this.$refs.tableBox.reload()
+
+      }
     }
+
   }
 </script>
 

@@ -26,7 +26,7 @@ const routes=[
         path: '/administrators/index',
         name: 'administrators-index',
         component: (resolve) => require(['@/pages/permission/AdministratorsIndex'], resolve),
-        meta:{requiresAuth:true},
+        meta:{requiresAuth:true,keepAlive:true},
       },
       {
         path: '/administrators/edit',
@@ -44,7 +44,7 @@ const routes=[
         path: '/roles/index',
         name: 'roles-index',
         component: (resolve) => require(['@/pages/permission/RolesIndex'], resolve),
-        meta:{requiresAuth:true},
+        meta:{requiresAuth:true,keepAlive:true},
       },
       {
         path: '/roles/edit',
@@ -56,7 +56,7 @@ const routes=[
         path: '/category/index',
         name: 'category-index',
         component: (resolve) => require(['@/pages/category/CategoryIndex'], resolve),
-        meta:{requiresAuth:true},
+        meta:{requiresAuth:true,keepAlive:true},
       },
       {
         path: '/category/children',
@@ -70,7 +70,7 @@ const routes=[
         path: '/member/index',
         name: 'member-index',
         component: (resolve) => require(['@/pages/member/MemberIndex'], resolve),
-        meta:{requiresAuth:true},
+        meta:{requiresAuth:true,keepAlive:true},
       },
       {
         path: '/member/edit',
@@ -83,7 +83,7 @@ const routes=[
         path: '/menu/index',
         name: 'menu-index',
         component: (resolve) => require(['@/pages/menu/MenuIndex'], resolve),
-        meta:{requiresAuth:true},
+        meta:{requiresAuth:true,keepAlive:true},
       },
       {
         path: '/menu/children',
@@ -103,7 +103,7 @@ const routes=[
         path: '/news/index',
         name: 'news-index',
         component: (resolve) => require(['@/pages/news/NewsIndex'], resolve),
-        meta:{requiresAuth:true},
+        meta:{requiresAuth:true,keepAlive:true},
       },
       {
         path: '/news/edit',
@@ -118,7 +118,7 @@ const routes=[
         path: '/course/index',
         name: 'course-index',
         component: (resolve) => require(['@/pages/course/CourseIndex'], resolve),
-        meta:{requiresAuth:true},
+        meta:{requiresAuth:true,keepAlive:true},
       },
       {
         path: '/course/edit',
@@ -131,7 +131,7 @@ const routes=[
         path: '/lesson/index',
         name: 'lesson-index',
         component: (resolve) => require(['@/pages/course/LessonIndex'], resolve),
-        meta:{requiresAuth:true},
+        meta:{requiresAuth:true,keepAlive:true},
       },
       {
         path: '/lesson/edit',
@@ -144,7 +144,7 @@ const routes=[
         path: '/topic/index',
         name: 'topic-index',
         component: (resolve) => require(['@/pages/course/TopicIndex'], resolve),
-        meta:{requiresAuth:true},
+        meta:{requiresAuth:true,keepAlive:true},
       },
       {
         path: '/topic/edit',
@@ -156,7 +156,7 @@ const routes=[
         path: '/demo/index',
         name: 'demo-index',
         component: (resolve) => require(['@/pages/course/DemoIndex'], resolve),
-        meta:{requiresAuth:true},
+        meta:{requiresAuth:true,keepAlive:true},
       },
       {
         path: '/demo/edit',

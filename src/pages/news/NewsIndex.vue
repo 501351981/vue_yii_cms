@@ -8,7 +8,7 @@
         <button-box type="add" to="/news/edit" title="添加"></button-box>
         <button-box type="edit" @click="editItem"></button-box>
         <button-box class="btn-danger" @click="postToBaidu"><i class="fa fa-location-arrow"></i> 提交百度收录</button-box>
-        <dropdown-menu class="btn-dropdown">
+        <dropdown-menu class="btn-dropdown" ref="dropdownMenu">
           <template slot="toggle">
             <button-box class="btn-info">更改状态 <i class="fa fa-sort-amount-asc"></i></button-box>
           </template>
@@ -207,6 +207,7 @@
         network.post(api.news_save,post_data).then((res)=>{
           table.refresh()
         })
+        this.$refs.dropdownMenu.hide()
       },
       hide:function () {
         let table=this.$refs.tableBox
@@ -226,6 +227,7 @@
         network.post(api.news_save,post_data).then((res)=>{
           table.refresh()
         })
+        this.$refs.dropdownMenu.hide()
       },
       recommend:function () {
         let table=this.$refs.tableBox
@@ -245,6 +247,7 @@
         network.post(api.news_save,post_data).then((res)=>{
           table.refresh()
         })
+        this.$refs.dropdownMenu.hide()
       },
       cancleRecommend:function () {
         let table=this.$refs.tableBox
@@ -264,6 +267,7 @@
         network.post(api.news_save,post_data).then((res)=>{
           table.refresh()
         })
+        this.$refs.dropdownMenu.hide()
       },
       top:function () {
         let table=this.$refs.tableBox
@@ -283,6 +287,7 @@
         network.post(api.news_save,post_data).then((res)=>{
           table.refresh()
         })
+        this.$refs.dropdownMenu.hide()
       },
       cancleTop:function () {
         let table=this.$refs.tableBox
@@ -302,6 +307,7 @@
         network.post(api.news_save,post_data).then((res)=>{
           table.refresh()
         })
+        this.$refs.dropdownMenu.hide()
       }
 
     }
