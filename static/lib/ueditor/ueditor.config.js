@@ -44,7 +44,7 @@
             'link',
 
             'horizontal',
-            'drafts'
+            'drafts','insertcode'
         ]]
         ,catchRemoteImageEnable:true
 
