@@ -155,7 +155,16 @@
         this.$refs.tableBox.reload()
 
       }
+    },
+    beforeRouteEnter:function (to,from,next) {
+      if(from.path=='/lesson/edit'){
+        next(vm=>{
+          vm.$refs.tableBox.refresh()
+        })
+      }
+      next()
     }
+
 
   }
 </script>
