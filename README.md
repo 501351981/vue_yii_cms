@@ -5,7 +5,9 @@
 
 ## 主要功能
 > 通过vue的动态添加路由，实现了权限管理
+
 > 基础的登录、修改密码等
+
 > 组件：网络请求、表单校验、表格组件（table）、文章编辑器组件（ueditor）、图片上传组件（image－upload）、面包屑（breadcrumb）、按钮（button）、菜单（menu）、模态框（modal）、toast、弹窗确认（confirm）等
 
 
