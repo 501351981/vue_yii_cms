@@ -1,21 +1,34 @@
-# cms2
+# vue_yii_cms
 
-> A Vue.js project
+> 采用vue全家桶开发的一个后台管理系统，使用了vue Router，Vuex等技术，接口采取php的YII框架编写，水平有限，暂不开源，有兴趣的可以联系我
+> 微信：15600059668
 
-## Build Setup
+## 主要功能
+> 通过vue的动态添加路由，实现了权限管理
+> 基础的登录、修改密码等
+> 组件：网络请求、表单校验、表格组件（table）、文章编辑器组件（ueditor）、图片上传组件（image－upload）、面包屑（breadcrumb）、按钮（button）、菜单（menu）、模态框（modal）、toast、弹窗确认（confirm）等
+
+
+## 下载使用
 
 ``` bash
-# install dependencies
+# 下载之后先安装依赖
 npm install
 
-# serve with hot reload at localhost:8080
+# 开发时输入如下命令
 npm run dev
 
-# build for production with minification
+# 构建线上dist文件，采取如下命令
 npm run build
 
-# build for production and view the bundle analyzer report
-npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+## 测试账号密码
+
+``` bash
+账号：test
+密码：123456
+如有什么问题，可以联系我，微信：15600059668，添加请注明github
+
+```
+
