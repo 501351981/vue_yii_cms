@@ -2,11 +2,11 @@
   <transition name="fade">
    <div class="confirm" v-show="isShow">
      <div class="confirm-content">
-       <div class="title">{{title}}</div>
-       <div class="content">{{content}}</div>
+       <div class="title">{{confirm.title}}</div>
+       <div class="content">{{confirm.content}}</div>
        <div class="btn-area">
-         <div class="btn btn-primary " @click="confirm">{{confirmText}}</div>
-         <div class="btn btn-default " v-if="showCancel" @click="cancle">{{cancelText}}</div>
+         <div class="btn btn-primary" @click="onOk">{{confirm.confirmText}}</div>
+         <div class="btn btn-default" v-if="confirm.showCancel" @click="onCancle">{{confirm.cancelText}}</div>
        </div>
      </div>
 
@@ -19,28 +19,35 @@
     name:'Confirm',
     data:function () {
       return {
-        title:'提醒',
-        content:'',
-        confirmText:'确定',
-        cancelText:'取消',
-        showCancel:true,
-        isShow:true,
-        success:'',
-        fail:''
+        confirm:{
+          title:'提醒',
+          content:'',
+          confirmText:'确定',
+          cancelText:'取消',
+          showCancel:true,
+          success:'',
+          fail:''
+        },
+        isShow:false
+
       }
     },
     methods:{
-      confirm:function () {
-        if(typeof(this.success)=='function'){
-          this.success()
+      onOk:function () {
+        if(typeof(this.confirm.success)=='function'){
+          this.confirm.success()
         }
         this.isShow=false
       },
-      cancle:function () {
-        if(typeof(this.fail)=='function'){
-          this.fail()
+      onCancle:function () {
+        if(typeof(this.confirm.fail)=='function'){
+          this.confirm.fail()
         }
         this.isShow=false
+      },
+      show:function (opt) {
+        this.confirm=opt
+        this.isShow=true
       }
     }
   }
@@ -77,14 +84,14 @@
     .content{
       font-size: 15px;
       line-height: 18px;
-      color: #999999;
+      /*color: #999999;*/
       padding: 30px 20px;
     }
     .btn-area{
       width: 100%;
       height: 50px;
       line-height: 50px;
-      border-top: 1px solid #d2d3d5;
+      border-top: 1px solid #eeeeee;
       display: flex;
       justify-content: center;
       align-items: center;

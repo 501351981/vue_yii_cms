@@ -1,41 +1,41 @@
 import vue from 'vue'
 import toastComponent from './toast.vue'
 
-const ToastConstructor = vue.extend(toastComponent)
+let Toast={}
 
-function showToast(options) {
+//插件必须有个install函数
+Toast.install=function (vue) {
 
-  let opt={
-    title:'',
-    icon:'none',
-    duration:2000,
-    type:''
-  }
+  //创建组件构造器
+  let ToastConstructor = vue.extend(toastComponent)
+  //实例化组件
+  let toastDom=new ToastConstructor()
+  //挂载之后，获取dom
+  let tpl=toastDom.$mount().$el
 
-  Object.assign(opt,options)
-  // 实例化一个 toast.vue
-  const toastDom = new ToastConstructor({
-    el: document.createElement('div'),
-    data() {
-      return {
-        title: opt.title,
-        isShow: true,
-        type:opt.type
-      }
+  //定时器handle，再设定定时之前，清除原来的定时器
+  let timeout=''
+
+  //将组件插入页面
+  document.body.appendChild(tpl)
+
+  vue.prototype.$toast=function (options) {
+    let opt={
+      title:'',
+      type:'',
+      duration:2000
     }
-  })
 
-  document.body.appendChild(toastDom.$el)
+    //合并参数
+    Object.assign(opt,options)
 
-  // 过了 duration 时间后隐藏
-  setTimeout(() => {toastDom.isShow = false} ,opt.duration)
+    //显示toast
+    toastDom.show(opt.title,opt.type)
+
+    //定时隐藏toast
+    clearTimeout(timeout)
+    timeout=setTimeout(() => {toastDom.hide()} ,opt.duration)
+  }
 }
 
-
-function registryToast() {
-  // 将组件注册到 vue 的 原型链里去,
-  // 这样就可以在所有 vue 的实例里面使用 this.$toast()
-  vue.prototype.$toast = showToast
-}
-
-export default registryToast
+export default Toast

@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <div class="toast" v-show="isShow" :class="className">{{title}}</div>
+    <div class="toast" v-show="isShow" :class="type">{{title}}</div>
   </transition>
 
 </template>
@@ -8,34 +8,23 @@
 <script>
   export default {
     name:'Toast',
-    computed:{
-      className:function () {
-        let class_name=''
-        switch (this.type){
-          case 'error':
-            class_name='error'
-            break
-          case 'success':
-            class_name='success'
-            break
-          default:
-            class_name=''
-
-        }
-
-        return class_name
-      }
-    },
     data:function () {
       return {
         title:'',
-        icon:'none',
-        isShow:false,
-        type:''
+        type:'',
+        isShow:false
+
       }
     },
     methods:{
-
+      show:function (title,type) {
+        this.title=title
+        this.type=type
+        this.isShow=true
+      },
+      hide:function () {
+        this.isShow=false
+      }
     }
   }
 </script>
