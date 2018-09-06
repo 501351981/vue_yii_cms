@@ -26,6 +26,9 @@ export default {
   news_detail:'/adm/v1/news/detail',
   member_index:'/adm/v1/member/index',
   member_save:'/adm/v1/member/save',
+  banner_index:'/adm/v1/banner/index',
+  banner_save:'/adm/v1/banner/save',
+  banner_detail:'/adm/v1/banner/detail',
 
   //上传
   upload_server:'/adm/v1/file/up',//通过服务器上传的接口地址

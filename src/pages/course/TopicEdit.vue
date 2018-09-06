@@ -209,10 +209,8 @@
 
         })
 
-        setTimeout( ()=> {
-          console.log("新的链接＝"+api.get_topic_news+'?topic_id='+id)
-          this.$refs.tableBox.urlIn=api.get_topic_news+'?topic_id='+id
-        },200)
+        this.table.url=api.get_topic_news+'?topic_id='+id
+
 
       }
     },

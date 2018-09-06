@@ -112,6 +112,19 @@ const routes=[
         meta:{requiresAuth:true},
       },
 
+      {
+        path: '/banner/index',
+        name: 'banner-index',
+        component: (resolve) => require(['@/pages/banner/BannerIndex'], resolve),
+        meta:{requiresAuth:true},
+      },
+      {
+        path: '/banner/edit',
+        name: 'banner-edit',
+        component: (resolve) => require(['@/pages/banner/BannerEdit'], resolve),
+        meta:{requiresAuth:true},
+      },
+
       //以下为项目所需路由
 
       {

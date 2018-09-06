@@ -68,6 +68,12 @@
     name:'TableBox',
     props:{
       url:String,
+      params:{
+        type:Object,
+        default:function () {
+          return {}
+        }
+      },
       columns:Array,
       keyName:{
         type:String,
@@ -82,9 +88,19 @@
       multiSelect:{
         type:Boolean,
         default:false
+      },
+      autoLoad:{
+        type:Boolean,
+        default:true
       }
     },
     watch:{
+      url:function(){
+        this.reload()
+      },
+      params:function(){
+        this.reload()
+      },
       data:function (newdata) {
         this.requestData(this.page)
       }
@@ -93,14 +109,12 @@
       return {
         items:[],
         page:1,
-        params:{},
         total:0,
         scroll:false,
         total_page:1,
         pages:[],
         select_rows:[],
         pagesizeIn:this.pagesize,
-        urlIn:this.url,
         loading:false
       }
     },
@@ -108,7 +122,9 @@
 
     },
     mounted:function () {
-      this.requestData(this.page)
+      if(this.autoLoad){
+        this.requestData(this.page)
+      }
     },
     methods:{
       rowIndex:function (index) {
@@ -131,11 +147,11 @@
       requestData:function(page){
         //请求数据
 
+        console.log(this.url)
 
-
-        if(this.urlIn){
+        if(this.url){
           this.loading=true
-          network.get(this.urlIn,{
+          network.get(this.url,{
             page:page,
             page_size:this.pagesizeIn,
             ...this.params
@@ -249,14 +265,11 @@
 
         return s_row_datas
       },
-      refresh:function (params={}) {
-        //刷新当前页面
-        this.params=params
+      refresh:function () {
         this.requestData(this.page)
       },
-      reload:function(params={}){
+      reload:function(){
         //重新请求第一页
-        this.params=params
         this.page=1
         this.requestData(this.page)
       },
@@ -440,7 +453,6 @@
         }
         .tc{
           text-align: center;
-          vertical-align: middle;
         }
       }
 

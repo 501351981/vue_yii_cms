@@ -133,6 +133,15 @@
         })
       }
 
+    },
+    beforeRouteEnter:function (to,from,next) {
+      //从编辑页面返回到列表，应该刷新一下当前页面
+      if(from.path=='/demo/edit'){
+        next(vm=>{
+          vm.$refs.tableBox.refresh()
+        })
+      }
+      next()
     }
   }
 </script>

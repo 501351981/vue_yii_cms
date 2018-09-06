@@ -76,10 +76,7 @@
     components: {TableBox,ButtonBox,Modal,FormSubmit},
     watch:{
       '$route':function (route) {
-        let table=this.$refs.tableBox
-        table.urlIn=api.category_index+'?pid='+route.query.pid
-        table.reload()
-
+        this.table.url=api.category_index+'?pid='+route.query.pid
         this.ptitle=route.query.ptitle
       }
     },

@@ -10,7 +10,7 @@
       <div class="col-xs-6"></div>
     </div>
 
-    <table-box ref="tableBox" :url="table.url" :columns="table.columns" :key-name="table.keyName" :parse-data="table.parseData" :data="table.data" :multi-select="table.multiSelect">
+    <table-box ref="tableBox" :url="table.url" :params="query" :columns="table.columns" :key-name="table.keyName" :parse-data="table.parseData" :data="table.data" :multi-select="table.multiSelect">
 
       <tr slot="row"  slot-scope="props">
         <td class="tc">{{props.index}}</td>
@@ -106,9 +106,9 @@
     methods:{
       queryData:function () {
         let tableBox=this.$refs.tableBox
-        tableBox.reload({
-          keywords:this.query.keywords
-        })
+        tableBox.reload()
+        // let queryData={...this.query}
+        // this.query=queryData
       }
     }
   }
