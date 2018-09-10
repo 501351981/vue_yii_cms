@@ -29,6 +29,8 @@ export default {
   banner_index:'/adm/v1/banner/index',
   banner_save:'/adm/v1/banner/save',
   banner_detail:'/adm/v1/banner/detail',
+  stats_member_count:'/adm/v1/stats/member',
+  stats_member_graph:'/adm/v1/stats/member-graph',
 
   //上传
   upload_server:'/adm/v1/file/up',//通过服务器上传的接口地址

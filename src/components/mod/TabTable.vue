@@ -91,9 +91,9 @@
       li{
         display: inline-block;
         list-style: none;
-        padding: 0 20px;
-        line-height: 30px;
-        height: 30px;
+        padding: 0 25px;
+        line-height: 36px;
+        height: 36px;
         border-radius: 2px;
         background-color: #fff;
         box-shadow: 0 2px 2px 0 rgba(225,225,225,.5);

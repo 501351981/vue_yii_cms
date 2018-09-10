@@ -6,16 +6,21 @@
 const routes=[
   {
     path: '/',
-    name: 'dashboard',
-    component: (resolve) => require(['@/pages/layout/Layout'], resolve),
+    redirect: '/member/index',
     meta:{requiresAuth:true,noPermission:true},
   },
   {
-    path: '/index',
+    path: '/dashboard',
     name: 'dashboard',
     component: (resolve) => require(['@/pages/layout/Layout'], resolve),
     meta:{requiresAuth:true,noPermission:true},
     children:[
+      {
+        path: '/site/index',
+        name: 'site-index',
+        component: (resolve) => require(['@/pages/site/Index'], resolve),
+        meta:{requiresAuth:false,noPermission:true},
+      },
       {
         path: '/site/update-pwd',
         name: 'site-update-pwd',
@@ -123,6 +128,13 @@ const routes=[
         name: 'banner-edit',
         component: (resolve) => require(['@/pages/banner/BannerEdit'], resolve),
         meta:{requiresAuth:true},
+      },
+
+      {
+        path: '/stats/member',
+        name: 'stats-member',
+        component: (resolve) => require(['@/pages/stats/StatsMember'], resolve),
+        meta:{requiresAuth:true,keepAlive:true},
       },
 
       //以下为项目所需路由

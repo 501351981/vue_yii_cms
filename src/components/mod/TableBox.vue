@@ -125,6 +125,7 @@
       if(this.autoLoad){
         this.requestData(this.page)
       }
+
     },
     methods:{
       rowIndex:function (index) {
@@ -147,7 +148,6 @@
       requestData:function(page){
         //请求数据
 
-        console.log(this.url)
 
         if(this.url){
           this.loading=true

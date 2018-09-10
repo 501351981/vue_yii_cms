@@ -73,9 +73,13 @@
       },
       logout:function () {
         network.post(api.logout).then(()=>{
-          this.$router.push({path:config.login_path})
+
+
           authorize.clearToken()
           this.$store.commit('CLEAR_USER_INFO')
+          //采取跳转目的是为了清空router，因为之前采取了addRouter，但是没法清除，只能刷新页面
+          window.location.href=config.login_path
+          // this.$router.push({path:config.login_path})
         })
       }
     }
