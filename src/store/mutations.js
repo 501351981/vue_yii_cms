@@ -16,5 +16,7 @@ export default {
   },
   [type.SET_ROUTER](state,router){
     state.router=router
-  }
+  },
+
+
 }

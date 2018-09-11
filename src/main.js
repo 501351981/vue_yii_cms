@@ -14,9 +14,17 @@ import confirmRegistry from './components/plugins/confirm/index'
 
 
 
+import TableBox from './components/mod/TableBox'
+Vue.component('TableBox',TableBox)
+
+
+
+Vue.prototype.$api=api
+
 // 这里也可以直接执行 toastRegistry()
 Vue.use(toastRegistry)
 Vue.use(confirmRegistry)
+
 
 
 router.beforeEach(async (to,from,next)=>{
