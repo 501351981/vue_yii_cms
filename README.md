@@ -10,6 +10,14 @@
 
 > 组件：网络请求、表单校验、表格组件（table）、文章编辑器组件（ueditor）、图片上传组件（image－upload）、面包屑（breadcrumb）、按钮（button）、菜单（menu）、模态框（modal）、toast、弹窗确认（confirm）等
 
+## 测试账号密码
+[http://cms.github.mooov.cn/](http://cms.github.mooov.cn/)
+``` bash
+账号：test
+密码：123456
+如有什么问题，可以联系我，微信：15600059668，添加请注明github
+
+```
 
 ## 下载使用
 
@@ -25,12 +33,4 @@ npm run build
 
 ```
 
-## 测试账号密码
-[http://cms.github.mooov.cn/](http://cms.github.mooov.cn/)
-``` bash
-账号：test
-密码：123456
-如有什么问题，可以联系我，微信：15600059668，添加请注明github
-
-```
 
