@@ -40,8 +40,6 @@
   import ImageUpload from "../../components/mod/ImageUpload"
 
   import formValidation from '../../utils/base/formValidation'
-  import api from '../../utils/config/api'
-  import network from '../../utils/base/network'
 
 
   export default {
@@ -107,7 +105,7 @@
       let id=this.$route.query.id
       this.form.data.id=id
 
-      network.post(api.course_detail,{
+      this.$network.post(this.$api.course_detail,{
         id:id
       }).then((res)=>{
 
@@ -131,7 +129,7 @@
         }
 
 
-        network.post(api.course_save,{
+        this.$network.post(this.$api.course_save,{
           ...form_data
 
         }).then((res)=>{

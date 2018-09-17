@@ -71,12 +71,11 @@
   import ImageUpload from "../../components/mod/ImageUpload"
 
   import formValidation from '../../utils/base/formValidation'
-  import api from '../../utils/config/api'
-  import network from '../../utils/base/network'
+
 
 
   export default {
-    name: 'RolesEdit',
+    name: 'BannerEdit',
     components: {ImageUpload, FormSubmit},
 
     data:function () {
@@ -157,7 +156,7 @@
 
       let id=this.$route.query.id
 
-      network.post(api.banner_detail,{
+      this.$network.post(this.$api.banner_detail,{
         id:id
       }).then((res)=>{
         if(id){
@@ -181,7 +180,7 @@
           return false
         }
 
-        network.post(api.banner_save,{
+        this.$network.post(this.$api.banner_save,{
           ...form_data
 
         }).then((res)=>{

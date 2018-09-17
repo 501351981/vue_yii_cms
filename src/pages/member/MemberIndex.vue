@@ -31,11 +31,6 @@
   import TableBox from '../../components/mod/TableBox'
   import ButtonBox from  '../../components/mod/ButtonBox'
 
-  import authorize from '../../utils/base/authorize'
-  import api from '../../utils/config/api'
-  import network from '../../utils/base/network'
-
-
   export default {
     name: 'MemberIndex',
     components: {TableBox,ButtonBox},
@@ -46,7 +41,7 @@
           keywords:''
         },
         table:{
-          url:api.member_index,
+          url:this.$api.member_index,
           multiSelect:false,
           keyName:'id',
           columns:[

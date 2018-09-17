@@ -75,8 +75,6 @@
 
 <script>
 
-  import api from '../../utils/config/api'
-  import network from '../../utils/base/network'
   import formValidation from '../../utils/base/formValidation'
 
   import TableBox from '../../components/mod/TableBox'
@@ -91,7 +89,7 @@
     data:function () {
       return {
         table:{
-          url:api.menu_index,
+          url:this.$api.menu_index,
           multiSelect:false,
           keyName:'id',
           columns:[
@@ -204,7 +202,7 @@
               id: id,
               operation:'delete'
             }
-            network.post(api.menu_save,post_data).then((res)=>{
+            this.$network.post(this.$api.menu_save,post_data).then((res)=>{
               table.refresh()
             })
           },
@@ -240,7 +238,7 @@
           return false
         }
 
-        network.post(api.menu_save,{
+        this.$network.post(this.$api.menu_save,{
           ...form_data
         }).then((res)=>{
           this.$toast({

@@ -28,13 +28,11 @@
 
   import formValidation from '../../utils/base/formValidation'
 
-  import api from '../../utils/config/api'
-  import network from '../../utils/base/network'
   import {md5} from "../../utils/lib/md5";
 
 
   export default {
-    name: 'RolesEdit',
+    name: 'UpdatePwd',
     components: {FormSubmit},
 
     data:function () {
@@ -100,7 +98,7 @@
         form_data.old_password=md5(form_data.old_password)
         form_data.new_password=md5(form_data.new_password)
 
-        network.post(api.user_update_password,{
+        this.$network.post(this.$api.user_update_password,{
           ...form_data
         }).then((res)=>{
           this.$toast({

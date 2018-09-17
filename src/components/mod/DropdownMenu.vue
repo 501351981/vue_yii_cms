@@ -3,7 +3,7 @@
     <div v-on:click="toggle" class="dropdown-toggle">
       <slot name="toggle" ></slot>
     </div>
-    <div v-if="isshow" class="dropdown-menu-list">
+    <div v-if="isshow" class="dropdown-menu-list" @click="hide">
       <slot name="menu" ></slot>
     </div>
   </div>
@@ -16,6 +16,9 @@
       return {
         isshow: false
       }
+    },
+    mounted:function(){
+
     },
     methods:{
       toggle:function (e) {

@@ -29,13 +29,9 @@
 
 <script>
 
-  import api from '../../utils/config/api'
-  import network from '../../utils/base/network'
-
 
   import TableBox from '../../components/mod/TableBox'
   import ButtonBox from  '../../components/mod/ButtonBox'
-
 
   export default {
     name: 'CategoryIndex',
@@ -46,7 +42,7 @@
         cname:'',
         cid:'',
         table:{
-          url:api.lesson_index+'?cid='+this.$route.query.cid,
+          url:this.$api.lesson_index+'?cid='+this.$route.query.cid,
           multiSelect:false,
           keyName:'id',
           columns:[
@@ -128,13 +124,13 @@
         this.$confirm({
           content:"删除操作不能恢复，您确定要删除吗",
 
-          success:function () {
+          success: ()=> {
             let post_data={
               id: id,
               status:9,
               operation:'delete'
             }
-            network.post(api.lesson_save,post_data).then((res)=>{
+            this.$network.post(this.$api.lesson_save,post_data).then((res)=>{
               table.refresh()
             })
           },
@@ -148,7 +144,7 @@
     },
     activated:function () {
       //此部分是为了处理缓存，如果缓存页面和当前页面cid不一致，则重新请求数据
-      let new_url=api.lesson_index+'?cid='+this.$route.query.cid
+      let new_url=this.$api.lesson_index+'?cid='+this.$route.query.cid
       if(this.table.url!=new_url){
         this.table.url=new_url
         this.$refs.tableBox.urlIn=new_url

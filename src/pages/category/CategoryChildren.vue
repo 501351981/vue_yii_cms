@@ -62,21 +62,18 @@
 
 <script>
 
-  import api from '../../utils/config/api'
-  import network from '../../utils/base/network'
   import formValidation from '../../utils/base/formValidation'
 
-  import TableBox from '../../components/mod/TableBox'
   import ButtonBox from  '../../components/mod/ButtonBox'
   import Modal from '../../components/mod/Modal'
   import FormSubmit from "../../components/mod/FormSubmit"
 
   export default {
     name: 'CategoryIndex',
-    components: {TableBox,ButtonBox,Modal,FormSubmit},
+    components: {ButtonBox,Modal,FormSubmit},
     watch:{
       '$route':function (route) {
-        this.table.url=api.category_index+'?pid='+route.query.pid
+        this.table.url=this.$api.category_index+'?pid='+route.query.pid
         this.ptitle=route.query.ptitle
       }
     },
@@ -84,7 +81,7 @@
       return {
         ptitle:'',
         table:{
-          url:api.category_index+'?pid='+this.$route.query.pid,
+          url:this.$api.category_index+'?pid='+this.$route.query.pid,
           multiSelect:false,
           keyName:'id',
           columns:[
@@ -193,13 +190,13 @@
         this.$confirm({
           content:"删除操作不能恢复，您确定要删除吗",
 
-          success:function () {
+          success: ()=> {
             let post_data={
               id: id,
               status:9,
               operation:'updateStatus'
             }
-            network.post(api.category_save,post_data).then((res)=>{
+            this.$network.post(this.$api.category_save,post_data).then((res)=>{
               table.refresh()
             })
           },
@@ -234,7 +231,7 @@
           return false
         }
 
-        network.post(api.category_save,{
+        this.$network.post(this.$api.category_save,{
           ...form_data
         }).then((res)=>{
           this.$toast({

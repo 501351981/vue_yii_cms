@@ -4,66 +4,66 @@
       <div class="loading-icon"></div>
     </div>
 
-     <div class="table-header" ref="tableHead">
-       <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th width="80">序号</th>
-              <th v-for="column in columns" :width="column.width">{{column.title}}</th>
-            </tr>
-          </thead>
-       </table>
+    <div class="table-header" ref="tableHead">
+      <table class="table table-bordered">
+        <thead>
+        <tr>
+          <th width="80">序号</th>
+          <th v-for="column in columns" :width="column.width">{{column.title}}</th>
+        </tr>
+        </thead>
+      </table>
 
-     </div>
-     <div class="table-body" ref="tableBody" @scroll="tableScroll">
+    </div>
+    <div class="table-body" ref="tableBody" @scroll="tableScroll">
 
-       <table class="table table-bordered">
-         <thead>
-           <tr class="tr-hide">
-              <th width="80">序号</th>
-              <th v-for="column in columns" :width="column.width">{{column.title}}</th>
-           </tr>
-         </thead>
-         <tbody>
-               <slot name="row" v-for="(item,index) in items"  :item="item" :index="rowIndex(index)" @click="selectRow">
-                 <tr>
-                   <td class="tc">{{rowIndex(index)}}</td>
-                   <td  v-for="column in columns">
-                     {{item[column.field]}}
-                   </td>
-                 </tr>
-               </slot>
-         </tbody>
-       </table>
-     </div>
-     <div class="table-page">
-         <div class="page-info">
-              <span>纪录总数:</span><span class="total">{{total}}</span><span>，共</span><span  class="total">{{total_page}}</span><span>页，</span>
-              <span>每页显示:</span>
-              <select name="dataTable-pagesize" class="form-control input-sm" v-model="pagesizeIn" @change="changePagesize">
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="20">20</option>
-                <option value="30">30</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-              </select> 条记录
-         </div>
-         <div class="page-pagination">
-             <ul>
-                 <li class="first" :class="{disabled:page==1}" @click="page>1&&requestData(1)">首页</li>
-                 <li class="pre" :class="{disabled:page==1}"  @click="page>1&&requestData(page-1)">上一页</li>
-                 <li v-for="p in pages" :class="{active:p==page}"  @click="p!=page&&requestData(p)">{{p}}</li>
-                 <li class="next" :class="{disabled:page==total_page}"  @click="page<total_page&&requestData(page+1)">下一页</li>
-                 <li class="last" :class="{disabled:page==total_page}"  @click="page<total_page&&requestData(total_page)">尾页</li>
-             </ul>
-         </div>
-     </div>
+      <table class="table table-bordered">
+        <thead>
+        <tr class="tr-hide">
+          <th width="80">序号</th>
+          <th v-for="column in columns" :width="column.width">{{column.title}}</th>
+        </tr>
+        </thead>
+        <tbody>
+        <slot name="row" v-for="(item,index) in items"  :item="item" :index="rowIndex(index)">
+          <tr>
+            <td class="tc">{{rowIndex(index)}}</td>
+            <td  v-for="column in columns">
+              {{item[column.field]}}
+            </td>
+          </tr>
+        </slot>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-page">
+      <div class="page-info">
+        <span>纪录总数:</span><span class="total">{{total}}</span><span>，共</span><span  class="total">{{total_page}}</span><span>页，</span>
+        <span>每页显示:</span>
+        <select name="dataTable-pagesize" class="form-control input-sm" v-model="pagesizeIn" @change="changePagesize">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="30">30</option>
+          <option value="50">50</option>
+          <option value="100">100</option>
+        </select> 条记录
+      </div>
+      <div class="page-pagination">
+        <ul>
+          <li class="first" :class="{disabled:page==1}" @click="page>1&&requestData(1)">首页</li>
+          <li class="pre" :class="{disabled:page==1}"  @click="page>1&&requestData(page-1)">上一页</li>
+          <li v-for="p in pages" :class="{active:p==page}"  @click="p!=page&&requestData(p)">{{p}}</li>
+          <li class="next" :class="{disabled:page==total_page}"  @click="page<total_page&&requestData(page+1)">下一页</li>
+          <li class="last" :class="{disabled:page==total_page}"  @click="page<total_page&&requestData(total_page)">尾页</li>
+        </ul>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-  import network from '../../utils/base/network'
+
   export default {
     name:'TableBox',
     props:{
@@ -136,6 +136,7 @@
       },
       setPage:function () {
         //计算分页相关信息
+
         this.total_page=Math.ceil(this.total/this.pagesizeIn)
 
         let start_page = (this.page-4)<1?1:(this.page-4)
@@ -148,10 +149,9 @@
       requestData:function(page){
         //请求数据
 
-
         if(this.url){
           this.loading=true
-          network.get(this.url,{
+          this.$network.get(this.url,{
             page:page,
             page_size:this.pagesizeIn,
             ...this.params
@@ -166,8 +166,9 @@
             this.setPage()
             this.setEvent()
             this.loading=false
-          }).catch(()=>{
+          }).catch((err)=>{
             this.loading=false
+            console.log("table请求失败:"+err)
           })
         }else if(this.data){
           this.page=page
@@ -213,33 +214,57 @@
             trs[i].className="" //初始都为非选中状态
 
             trs[i].onclick=function (e) {
-             if(that.multiSelect){
-               //如果是多选
-               if(this.className=="active"){
-                 this.className=""
-                 let index = that.select_rows.indexOf(i);
-                 if (index > -1) {
-                   that.select_rows.splice(index, 1);
-                 }
-               }else {
-                 this.className="active"
-                 that.select_rows.push(i)
-               }
+
+              if(that.multiSelect){
+                //如果是多选
+                if(this.className=="active"){
+                  this.className=""
+                  let index = that.select_rows.indexOf(i);
+                  if (index > -1) {
+                    that.select_rows.splice(index, 1);
+                  }
+                }else {
+                  this.className="active"
+                  that.select_rows.push(i)
+                }
 
 
-             }else {
-               //如果是单选
-               if(this.className=="active"){
-                 //啥也不做
-               }else {
-                 //删除其他元素的active样式
-                 for(let j=0;j<trs.length;j++){
-                   trs[j].className=''
-                 }
-                 this.className="active"
-                 that.select_rows[0]=i
-               }
-             }
+              }else {
+                if (e.shiftKey==1&&that.getSelectedRowId().length>0)
+                {
+                  console.log("shift被按下了")
+                  //如果已经选中了1个，那么就全选一批
+
+                  let has_select='';
+                  for(let j=0;j<trs.length;j++){
+                    if(trs[j].className=='active'){
+                      has_select=j;
+                      break
+                    }
+                  }
+                  let min=has_select>i?i:has_select
+                  let max=has_select>i?has_select:i
+
+                  for(let j=min,k=0;j<=max;j++,k++){
+                    trs[j].className='active'
+                    that.select_rows[k]=j
+                  }
+                  that.select_rows.length=max-min+1
+
+
+
+                }else {
+                  //如果是单选
+                  //删除其他元素的active样式
+                  for(let j=0;j<trs.length;j++){
+                    trs[j].className=''
+                  }
+                  this.className="active"
+                  that.select_rows[0]=i
+                  that.select_rows.length=1
+                }
+
+              }
             }
           }
 
@@ -256,6 +281,16 @@
 
         return s_row_ids
       },
+      getSelectedRowParam:function (field) {
+        let s_row_ids=[]
+        for(let i=0;i<this.select_rows.length;i++){
+          let row_data=this.items[this.select_rows[i]]
+          s_row_ids.push(row_data[field])
+        }
+
+        return s_row_ids
+      },
+
       getSelectedRowData:function () {
         let s_row_datas=[]
         for(let i=0;i<this.select_rows.length;i++){
@@ -392,9 +427,9 @@
     }
     .table-body{
       margin-top: 0px;
-      min-height: 200px;
+      min-height: 300px;
       max-height: 470px;
-      padding-bottom: 50px;
+      padding-bottom: 10px;
       background-color: white;
       overflow: scroll;
       position: relative;
@@ -437,6 +472,7 @@
           border: 1px solid #eef1f5;
           padding: 10px;
           font-size: 14px;
+          word-wrap: break-word;
           &:last-child{
             border-right: 1px solid transparent;
           }

@@ -27,8 +27,6 @@
         </tr>
       </template>
 
-
-
     </tab-table>
 
 
@@ -37,9 +35,6 @@
 
 <script>
 
-  import api from '../../utils/config/api'
-  import config from '../../utils/config/config'
-  import network from '../../utils/base/network'
   import helper from '../../utils/base/helper'
 
   import TabTable from '../../components/mod/TabTable'
@@ -107,15 +102,15 @@
           toggles:['未上线','已上线','已过期'],
           contents:[
             {
-              url:api.banner_index+'?status=0&valid=1',
+              url:this.$api.banner_index+'?status=0&valid=1',
               ...table_tpl
             },
             {
-              url:api.banner_index+'?status=1&valid=1',
+              url:this.$api.banner_index+'?status=1&valid=1',
               ...table_tpl
             },
             {
-              url:api.banner_index+'?valid=0',
+              url:this.$api.banner_index+'?valid=0',
               ...table_tpl
             },
           ]
@@ -167,13 +162,13 @@
         this.$confirm({
           content:"删除操作不能恢复，您确定要删除吗",
 
-          success:function () {
+          success: ()=> {
             let post_data={
               id: id,
               status:9,
               operation:'updateStatus'
             }
-            network.post(api.banner_save,post_data).then((res)=>{
+            this.$network.post(this.$api.banner_save,post_data).then((res)=>{
               tabTable.refresh()
             })
           },
@@ -195,7 +190,7 @@
           status:1,
           operation:'updateStatus'
         }
-        network.post(api.banner_save,post_data).then((res)=>{
+        this.$network.post(this.$api.banner_save,post_data).then((res)=>{
           tabTable.refresh()
         })
       },
@@ -213,7 +208,7 @@
           status:0,
           operation:'updateStatus'
         }
-        network.post(api.banner_save,post_data).then((res)=>{
+        this.$network.post(this.$api.banner_save,post_data).then((res)=>{
           tabTable.refresh()
         })
       }

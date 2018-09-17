@@ -61,8 +61,6 @@
 
 <script>
 
-  import api from '../../utils/config/api'
-  import network from '../../utils/base/network'
   import formValidation from '../../utils/base/formValidation'
 
   import TableBox from '../../components/mod/TableBox'
@@ -78,7 +76,7 @@
       return {
         ptitle:'',
         table:{
-          url:api.menu_children+'?pid='+this.$route.query.pid,
+          url:this.$api.menu_children+'?pid='+this.$route.query.pid,
           multiSelect:false,
           keyName:'id',
           columns:[
@@ -191,12 +189,12 @@
         this.$confirm({
           content:"删除操作不能恢复，您确定要删除吗",
 
-          success:function () {
+          success: ()=> {
             let post_data={
               id: id,
               operation:'delete'
             }
-            network.post(api.menu_save,post_data).then((res)=>{
+            this.$network.post(this.$api.menu_save,post_data).then((res)=>{
               table.refresh()
             })
           },
@@ -231,7 +229,7 @@
           return false
         }
 
-        network.post(api.menu_save,{
+        this.$network.post(this.$api.menu_save,{
           ...form_data
         }).then((res)=>{
           this.$toast({

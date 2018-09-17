@@ -22,8 +22,6 @@
 
   import formValidation from '../../utils/base/formValidation'
 
-  import api from '../../utils/config/api'
-  import network from '../../utils/base/network'
   import {md5} from "../../utils/lib/md5";
 
 
@@ -99,7 +97,7 @@
 
         form_data.password=md5(form_data.password)
 
-        network.post(api.user_reset_password,{
+        this.$network.post(this.$api.user_reset_password,{
           ...form_data
         }).then((res)=>{
           this.$toast({

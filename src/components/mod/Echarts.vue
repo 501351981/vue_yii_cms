@@ -4,7 +4,6 @@
   </div>
 </template>
 <script>
-  import network from '../../utils/base/network'
   import echarts from 'echarts'
   import helper from '../../utils/base/helper'
 
@@ -61,7 +60,7 @@
       },
       reload(){
         this.myEcharts.showLoading()
-        network.get(this.url,this.params).then(res=>{
+        this.$network.get(this.url,this.params).then(res=>{
           this.myEcharts.hideLoading()
           this.parseData(res,this.myEcharts)
         })

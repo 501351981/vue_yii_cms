@@ -37,22 +37,13 @@
   import FormSubmit from "../../components/mod/FormSubmit"
 
   import formValidation from '../../utils/base/formValidation'
-  import api from '../../utils/config/api'
-  import network from '../../utils/base/network'
-
-
   export default {
     name: 'RolesEdit',
     components: {FormSubmit},
 
     data:function () {
       return {
-        // id:'',
-        // role:{
-        //   description:'',
-        //   data:''
-        // },
-        // role_permissions:[],
+
         permissions:[],
 
         form:{
@@ -103,7 +94,7 @@
       let id=this.$route.query.id
       this.form.data.id=id
 
-      network.post(api.roles_detail,{
+      this.$network.post(this.$api.roles_detail,{
         id:id
       }).then((res)=>{
         console.log(res)
@@ -137,7 +128,7 @@
           return false
         }
 
-        network.post(api.roles_save,{
+        this.$network.post(this.$api.roles_save,{
           name:form_data.id,
           description:form_data.description,
           data:form_data.data,

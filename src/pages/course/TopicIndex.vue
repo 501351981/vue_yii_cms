@@ -29,9 +29,8 @@
 
 <script>
 
-  import api from '../../utils/config/api'
+
   import config from '../../utils/config/config'
-  import network from '../../utils/base/network'
 
   import TableBox from '../../components/mod/TableBox'
   import ButtonBox from  '../../components/mod/ButtonBox'
@@ -43,7 +42,7 @@
     data:function () {
       return {
         table:{
-          url:api.topic_index,
+          url:this.$api.topic_index,
           keyName:'id',
           columns:[
             {
@@ -105,7 +104,7 @@
               status:9,
               operation:'delete'
             }
-            network.post(api.topic_save,post_data).then((res)=>{
+            this.$network.post(this.$api.topic_save,post_data).then((res)=>{
               table.refresh()
             })
           },

@@ -30,9 +30,6 @@
 
 <script>
 
-  import api from '../../utils/config/api'
-  import network from '../../utils/base/network'
-
 
   import TableBox from '../../components/mod/TableBox'
   import ButtonBox from  '../../components/mod/ButtonBox'
@@ -48,7 +45,7 @@
           keywords:''
         },
         table:{
-          url:api.demo_index,
+          url:this.$api.demo_index,
           multiSelect:false,
           keyName:'id',
           columns:[
@@ -111,13 +108,13 @@
         this.$confirm({
           content:"删除操作不能恢复，您确定要删除吗",
 
-          success:function () {
+          success: ()=> {
             let post_data={
               id: id,
               status:9,
               operation:'delete'
             }
-            network.post(api.demo_save,post_data).then((res)=>{
+            this.$network.post(this.$api.demo_save,post_data).then((res)=>{
               table.refresh()
             })
           },

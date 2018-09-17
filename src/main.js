@@ -6,27 +6,24 @@ import router from './router/index'
 import dynamicRouter from './router/dynamic-router'
 import store from './store/index'
 import authorize from './utils/base/authorize'
-import netwrok from './utils/base/network'
+import network from './utils/base/network'
 import config from './utils/config/config'
 import api from './utils/config/api'
 import toastRegistry from './components/plugins/toast/index'
 import confirmRegistry from './components/plugins/confirm/index'
 
 
-
-import TableBox from './components/mod/TableBox'
-Vue.component('TableBox',TableBox)
-
-
-
+//全局js引用
 Vue.prototype.$api=api
+Vue.prototype.$network=network
 
-// 这里也可以直接执行 toastRegistry()
+
+// 全局插件引用
 Vue.use(toastRegistry)
 Vue.use(confirmRegistry)
 
 
-
+//导航守卫
 router.beforeEach(async (to,from,next)=>{
 
   if(to.meta.requiresAuth===false){
@@ -43,7 +40,7 @@ router.beforeEach(async (to,from,next)=>{
     //是否已经拉取menu，权限等信息
     if(!store.state.menu_loaded){
       //如果页面还没有拉取menu
-      await netwrok.post(api.get_user_info,'',true).then((res)=>{
+      await network.post(api.get_user_info,'',true).then((res)=>{
         store.commit('SET_USER_INFO',res)
         let dy_routers=dynamicRouter.generateRouteByPermision(dynamicRouter.routes,res.permission);
         router.addRoutes(dy_routers)

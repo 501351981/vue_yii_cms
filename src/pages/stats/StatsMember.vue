@@ -20,7 +20,6 @@
 
 <script>
 
-  import api from '../../utils/config/api'
 
   import ButtonBox from '../../components/mod/ButtonBox'
   import LabelRadio from '../../components/proj/LabelRadio'
@@ -49,7 +48,7 @@
         },
         echarts:{
           member:{
-            url:api.stats_member_graph,
+            url:this.$api.stats_member_graph,
             options:{
               tooltip: {
                 trigger: "axis"

@@ -3,7 +3,10 @@
     <navbar>
       <breadcrumb slot="breadcrumb" :breadcrumb="breadcrumb"></breadcrumb>
       <template slot="navbar-btn-area">
-        <div class="btn-clear-cache" @click="clearCache"><i class="fa  fa-refresh"></i>&nbsp;清除缓存</div>
+        <div class="btn-router" @click="pre"><i class="fa  fa-arrow-left"></i></div>
+        <div class="btn-router" @click="next"><i class="fa  fa-arrow-right"></i></div>
+        <div class="btn-router" @click="refresh"><i class="fa  fa-refresh"></i></div>
+        <div class="btn-clear-cache" @click="clearCache"><i class="fa  fa-rash"></i>&nbsp;清除缓存</div>
         <dropdown-menu class="navbar-dropdown">
           <template slot="toggle">
             <i class="fa  fa-user"></i>&nbsp;{{nickname}}&nbsp;<i class="fa fa-angle-down"></i>
@@ -81,6 +84,15 @@
           window.location.href=config.login_path
           // this.$router.push({path:config.login_path})
         })
+      },
+      pre(){
+        this.$router.back()
+      },
+      next(){
+        this.$router.forward()
+      },
+      refresh(){
+        window.location.reload()
       }
     }
   }
@@ -121,6 +133,14 @@
     &:hover{
       background-color: #eee;
     }
+  }
+  .btn-router{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 10px;
+    cursor: pointer;
   }
   .navbar-dropdown{
     .dropdown-toggle{

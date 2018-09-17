@@ -20,14 +20,9 @@
   import ButtonBox from "../../components/mod/ButtonBox"
 
   import config from '../../utils/config/config'
-  import api from '../../utils/config/api'
-  import network from '../../utils/base/network'
+
   import authorize from "../../utils/base/authorize";
   import {md5} from "../../utils/lib/md5";
-
-
-  import dynamicRouter from '../../router/dynamic-router'
-  import router from "../../router/index";
 
 
   export default {
@@ -70,7 +65,7 @@
           password:md5(this.form.password)
         }
 
-        network.post(api.login,post_data).then(res=>{
+        this.$network.post(this.$api.login,post_data).then(res=>{
 
           //保存token
           authorize.saveToken(res.token,res.expires)

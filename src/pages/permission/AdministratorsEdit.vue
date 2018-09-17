@@ -57,8 +57,6 @@
   import FormSubmit from "../../components/mod/FormSubmit"
 
   import formValidation from '../../utils/base/formValidation'
-  import api from '../../utils/config/api'
-  import network from '../../utils/base/network'
   import {md5} from "../../utils/lib/md5";
 
 
@@ -149,7 +147,7 @@
 
       let id=this.$route.query.id
       this.form.data.id=id
-      network.post(api.user_detail,{
+      this.$network.post(this.$api.user_detail,{
         id:id
       }).then((res)=>{
         console.log(res)
@@ -178,7 +176,7 @@
 
 
         form_data.password=md5(form_data.password)
-        network.post(api.user_save,{
+        this.$network.post(this.$api.user_save,{
           ...form_data
         }).then((res)=>{
           this.$toast({

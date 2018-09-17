@@ -86,8 +86,6 @@
   import ImageUpload from "../../components/mod/ImageUpload"
 
   import formValidation from '../../utils/base/formValidation'
-  import api from '../../utils/config/api'
-  import network from '../../utils/base/network'
 
 
   export default {
@@ -182,7 +180,7 @@
       let id=this.$route.query.id
       this.form.data.id=id
 
-      network.post(api.news_detail,{
+      this.$network.post(this.$api.news_detail,{
         id:id
       }).then((res)=>{
         console.log(res)
@@ -213,7 +211,7 @@
         let category_text = obj.options[index].text; // 选中文本
         form_data.category_text1=category_text
 
-        network.post(api.news_save,{
+        this.$network.post(this.$api.news_save,{
           ...form_data
 
         }).then((res)=>{

@@ -31,8 +31,7 @@
   import FormSubmit from "../../components/mod/FormSubmit"
 
   import formValidation from '../../utils/base/formValidation'
-  import api from '../../utils/config/api'
-  import network from '../../utils/base/network'
+
 
 
   export default {
@@ -89,7 +88,7 @@
       let id=this.$route.query.id
       this.form.data.id=id
       if(id){
-        network.post(api.demo_detail,{
+        this.$network.post(this.$api.demo_detail,{
           id:id,
         }).then((res)=>{
           this.form.data=res.detail
@@ -110,7 +109,7 @@
           return false
         }
 
-        network.post(api.demo_save,{
+        this.$network.post(this.$api.demo_save,{
           ...form_data
 
         }).then((res)=>{

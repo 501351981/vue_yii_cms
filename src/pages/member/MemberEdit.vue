@@ -8,9 +8,6 @@
 
   import authorize from '../../utils/base/authorize'
 
-
-  import api from '../../utils/config/api'
-  import network from '../../utils/base/network'
   import {SET_BREADCRUMB} from "../../store/mutation-types";
 
   export default {

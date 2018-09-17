@@ -50,9 +50,7 @@
 
 <script>
 
-  import api from '../../utils/config/api'
   import config from '../../utils/config/config'
-  import network from '../../utils/base/network'
 
   import TableBox from '../../components/mod/TableBox'
   import ButtonBox from  '../../components/mod/ButtonBox'
@@ -65,7 +63,7 @@
     data:function () {
       return {
         table:{
-          url:api.news_index,
+          url:this.$api.news_index,
           keyName:'id',
           columns:[
             {
@@ -142,13 +140,13 @@
         this.$confirm({
           content:"删除操作不能恢复，您确定要删除吗",
 
-          success:function () {
+          success: ()=> {
             let post_data={
               id: id,
               status:9,
               operation:'delete'
             }
-            network.post(api.news_save,post_data).then((res)=>{
+            this.$network.post(this.$api.news_save,post_data).then((res)=>{
               table.refresh()
             })
           },
@@ -185,7 +183,7 @@
           post_baidu:1,
           operation:'post_baidu'
         }
-        network.post(api.news_save,post_data).then((res)=>{
+        this.$network.post(this.$api.news_save,post_data).then((res)=>{
           table.refresh()
         })
       },
@@ -204,7 +202,7 @@
           status:1,
           operation:'online'
         }
-        network.post(api.news_save,post_data).then((res)=>{
+        this.$network.post(this.$api.news_save,post_data).then((res)=>{
           table.refresh()
         })
         this.$refs.dropdownMenu.hide()
@@ -224,7 +222,7 @@
           status:0,
           operation:'offline'
         }
-        network.post(api.news_save,post_data).then((res)=>{
+        this.$network.post(this.$api.news_save,post_data).then((res)=>{
           table.refresh()
         })
         this.$refs.dropdownMenu.hide()
@@ -244,7 +242,7 @@
           recommend_ok:1,
           operation:'recommend'
         }
-        network.post(api.news_save,post_data).then((res)=>{
+        this.$network.post(this.$api.news_save,post_data).then((res)=>{
           table.refresh()
         })
         this.$refs.dropdownMenu.hide()
@@ -264,7 +262,7 @@
           recommend_ok:0,
           operation:'c_recommend'
         }
-        network.post(api.news_save,post_data).then((res)=>{
+        this.$network.post(this.$api.news_save,post_data).then((res)=>{
           table.refresh()
         })
         this.$refs.dropdownMenu.hide()
@@ -284,7 +282,7 @@
           top_ok:1,
           operation:'top'
         }
-        network.post(api.news_save,post_data).then((res)=>{
+        this.$network.post(this.$api.news_save,post_data).then((res)=>{
           table.refresh()
         })
         this.$refs.dropdownMenu.hide()
@@ -304,7 +302,7 @@
           top_ok:0,
           operation:'c_top'
         }
-        network.post(api.news_save,post_data).then((res)=>{
+        this.$network.post(this.$api.news_save,post_data).then((res)=>{
           table.refresh()
         })
         this.$refs.dropdownMenu.hide()

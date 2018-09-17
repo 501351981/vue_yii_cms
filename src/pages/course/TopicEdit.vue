@@ -84,6 +84,7 @@
 </template>
 
 <script>
+
   import FormSubmit from "../../components/mod/FormSubmit"
   import ImageUpload from "../../components/mod/ImageUpload"
   import TableBox from '../../components/mod/TableBox'
@@ -92,8 +93,6 @@
 
   import formValidation from '../../utils/base/formValidation'
   import form from '../../utils/base/form'
-  import api from '../../utils/config/api'
-  import network from '../../utils/base/network'
 
 
   export default {
@@ -145,7 +144,7 @@
           }
         },
         table:{
-          url:api.get_topic_news+'?topic_id='+this.$route.query.id,
+          url:this.$api.get_topic_news+'?topic_id='+this.$route.query.id,
           keyName:'id',
           columns:[
             {
@@ -171,7 +170,7 @@
           }
         },
         table_news:{
-          url:api.news_index,
+          url:this.$api.news_index,
           pagesize:8,
           keyName:'id',
           columns:[
@@ -199,7 +198,7 @@
       '$route':function (route) {
         let id=route.query.id
         this.form.data.id=id
-        network.post(api.topic_detail,{
+        this.$network.post(this.$api.topic_detail,{
           id:id,
         }).then((res)=>{
           if(id){
@@ -209,7 +208,7 @@
 
         })
 
-        this.table.url=api.get_topic_news+'?topic_id='+id
+        this.table.url=this.$api.get_topic_news+'?topic_id='+id
 
 
       }
@@ -234,7 +233,7 @@
 
       let id=this.$route.query.id
       this.form.data.id=id
-      network.post(api.topic_detail,{
+      this.$network.post(this.$api.topic_detail,{
         id:id,
       }).then((res)=>{
         if(id){
@@ -257,7 +256,7 @@
           return false
         }
 
-        network.post(api.topic_save,{
+        this.$network.post(this.$api.topic_save,{
           ...form_data
 
         }).then((res)=>{
@@ -277,8 +276,8 @@
         this.$confirm({
           content:"删除操作不能恢复，您确定要删除吗",
 
-          success:function () {
-            network.post(api.topic_news_save,{
+          success: ()=> {
+            this.$network.post(this.$api.topic_news_save,{
               id:id,
               operation:'delete'
 
@@ -291,7 +290,7 @@
       },
       upItem:function(id){
         let that=this
-        network.post(api.topic_news_save,{
+        this.$network.post(this.$api.topic_news_save,{
           id:id,
           operation:'up'
 
@@ -301,7 +300,7 @@
       },
       downItem:function(id){
         let that=this
-        network.post(api.topic_news_save,{
+        this.$network.post(this.$api.topic_news_save,{
           id:id,
           operation:'down'
 
@@ -325,7 +324,7 @@
           this.$refs.modal.hide()
           return
         }
-        network.post(api.topic_news_save,{
+        this.$network.post(this.$api.topic_news_save,{
           topic_id:this.$route.query.id,
           news_id:id
         }).then(res=>{

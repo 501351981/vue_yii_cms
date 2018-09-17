@@ -60,8 +60,6 @@
   import Ueditor from "../../components/mod/Ueditor"
 
   import formValidation from '../../utils/base/formValidation'
-  import api from '../../utils/config/api'
-  import network from '../../utils/base/network'
 
 
   export default {
@@ -138,7 +136,7 @@
       let cid=this.$route.query.cid
       this.cid=cid
       this.cname=this.$route.query.cname
-      network.post(api.lesson_detail,{
+      this.$network.post(this.$api.lesson_detail,{
         id:id,
         cid:cid
       }).then((res)=>{
@@ -166,7 +164,7 @@
 
         form_data.course_id=this.cid
 
-        network.post(api.lesson_save,{
+        this.$network.post(this.$api.lesson_save,{
           ...form_data
 
         }).then((res)=>{

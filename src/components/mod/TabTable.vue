@@ -40,7 +40,7 @@
       }
     },
     mounted:function () {
-     this.init()
+      this.init()
     },
     methods:{
       init(){
@@ -67,6 +67,10 @@
       getSelectedRowId(){
         let tableBox=this.$refs['tableBox'+this.currentIndex]
         return tableBox[0].getSelectedRowId()
+      },
+      getSelectedRowParam(field){
+        let tableBox=this.$refs['tableBox'+this.currentIndex]
+        return tableBox[0].getSelectedRowParam(field)
       },
       getSelectedRowData(){
         let tableBox=this.$refs['tableBox'+this.currentIndex]
