@@ -28,7 +28,7 @@ npm run build
 ## 测试账号密码
 
 ``` bash
-demo地址：http://cms.github.mooov.cn/
+demo地址：<a>http://cms.github.mooov.cn/</a>
 账号：test
 密码：123456
 如有什么问题，可以联系我，微信：15600059668，添加请注明github
