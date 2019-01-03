@@ -208,7 +208,7 @@
             this.scroll=true
           }
 
-          let trs=this.$refs.tableBody.getElementsByTagName("tbody")[0].getElementsByTagName("tr")
+          let trs=this.$refs.tableBody.getElementsByTagName("tbody")[0].childNodes
 
           for(let i=0;i<trs.length;i++){
             trs[i].className="" //初始都为非选中状态

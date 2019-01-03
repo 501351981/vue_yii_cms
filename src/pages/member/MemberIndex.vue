@@ -31,9 +31,13 @@
   import TableBox from '../../components/mod/TableBox'
   import ButtonBox from  '../../components/mod/ButtonBox'
 
+  import pages from '../../utils/base/pages'
+
   export default {
     name: 'MemberIndex',
     components: {TableBox,ButtonBox},
+
+    ...pages,
 
     data:function () {
       return {
@@ -82,6 +86,8 @@
       }
     },
     mounted:function () {
+
+
       let breadcrumb=[
         {
           link: '/index',
