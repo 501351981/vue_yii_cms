@@ -1,3 +1,4 @@
+import {isArray,isObject,isString} from "./helper";
 
 const message={
   required:"请输入必填字段",
@@ -12,9 +13,23 @@ const message={
 
 const check={
   required:function(data){
+
+    if(data==null){
+      return false
+    }
+
     if(parseFloat(data).toString() != "NaN"){
       return true
     }
+
+    if((typeof data)=='object'){
+      if(data.length>0){
+        return true
+      }else{
+        return false
+      }
+    }
+
     data=data.replace(/\s+/g,"")
 
     if(data!=''&&data!=null&&data!=undefined){
@@ -66,10 +81,29 @@ const check={
 function validate(rules,data,msg={}) {
   for (let key in rules){
     let rule = rules[key]
+    //判断是否有前置条件
+    if(rule.hasOwnProperty('dependencies')){
+      let params=[]
+      if(rule.dependencies.hasOwnProperty('property')){
+        if(isArray(rule.dependencies.property)){
+          let properties=rule.dependencies.property;
+          for(let i=0;i<properties.length;i++){
+            params.push(data.hasOwnProperty(properties[i])?data[properties[i]]:'')
+          }
+        }else {
+          params.push(data.hasOwnProperty(rule.dependencies.property)?data[rule.dependencies.property]:'')
+        }
+      }
+      if(typeof rule.dependencies.condition=='function' && !rule.dependencies.condition(...params)){
+        continue
+      }
+    }
+
     for(let type in rule){
       switch (type){
         case 'required':
-          if(rule[type]&&(data[key]!=undefined)&&!check.required(data[key])){
+
+          if(rule[type]&&(!(data[key]===undefined))&&!check.required(data[key])){
             let err=(msg&&msg[key]&&msg[key][type])||message[type]
             return fail(err)
           }
