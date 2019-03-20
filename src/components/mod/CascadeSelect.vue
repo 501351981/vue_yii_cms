@@ -9,6 +9,7 @@
 
 <script>
   let default_params={
+    autoInit:true,//自动进行初始化，可以在列表页进行，而编辑页面，最好等详情信息拉取之后再初始化，否则进行多次请求
     length:1,//级联长度
     url:'',//ajax请求地址
     textField:'',//ajax获取数据中文本对应名称
@@ -33,41 +34,60 @@
       },
       config:Object
     },
+    watch:{
+      value(newvalue){
+        if(newvalue !== this.select.join(this.options.valueSeparator))
+          this.init()
+      }
+    },
     data:function () {
       return{
         options:Object.assign({},default_params,{...this.config}),
         data:[],//存储每级数据
         cache:{},//存储缓存数据，避免重复请求
-        select:[]
+        select:[],//存储每级当前选中的值
       }
     },
-    created:function () {
-      setTimeout(()=>{
-        this.init(0)
-      },this.options.delay)
-    },
-    watch:{
-      value (newValue) {
-        if(newValue!=this.select.join(this.options.valueSeparator)){
-          this.init(0)
-        }
+    mounted:function () {
+      if(this.options.autoInit){
+        setTimeout(()=>{
+          this.init()
+        },this.options.delay)
+      }
 
-      }
     },
     methods:{
-      init(index){
+      init(){
         let init_value=this.value.split(this.options.valueSeparator)
-        if(init_value[index]||index==0){
+        this.cache={}
+        this.initItem(0,'',init_value)
+      },
+      initItem(index=0,param='',init_value){
+
+        if(index==0||init_value[index-1]){
           //如果不为空或者是第一个，那么要请求数据
           this.select[index]=init_value[index]?init_value[index]:''
 
           if(this.options.url){
             this.$network.get(this.options.url,{
-              [index==0?this.options.defaultParamName:this.options.paramName]: index==0?this.options.defaultParam:this.select[index-1]
+              [index==0?this.options.defaultParamName:this.options.paramName]: index==0?this.options.defaultParam:param
             }).then((res)=>{
               let ajaxData=this.options.parseAjax(res)
-              this.data.splice(index,1,ajaxData);
 
+              param=''
+              //获取下一次请求的参数值
+              if(this.options.valueField==this.options.paramField){
+                param=init_value[index]
+              }else {
+                for(let i=0;i<ajaxData.length;i++){
+                  if(ajaxData[i][this.options.valueField]==init_value[index]){
+                    param=ajaxData[i][this.options.paramField]
+                    break
+                  }
+                }
+              }
+
+              this.data.splice(index,1,ajaxData);
               //存储到cache
 
               if(index==0){
@@ -78,6 +98,9 @@
                 let tempdata=this.cache;
 
                 for(let i=0;i<index;i++){
+                  if(!tempdata[this.select[i]]){
+                    break;
+                  }
                   tempdata=tempdata[this.select[i]].children
                 }
 
@@ -86,9 +109,22 @@
                 }
               }
 
+              // if(init_value[index]){
+              //   this.getData(index+1).then(()=>{
+              //     if(index<this.options.length-1){
+              //       this.initItem(index+1,param,init_value)
+              //     }
+              //   })
+              // }else {
+              //   if(index<this.options.length-1){
+              //     this.initItem(index+1,param,init_value)
+              //   }
+              // }
+
               if(index<this.options.length-1){
-                this.init(index+1)
+                this.initItem(index+1,param,init_value)
               }
+
 
 
             })
@@ -97,9 +133,6 @@
         }else {
           //不请求数据
           this.select[index]=''
-          if(index<this.options.length-1){
-            this.init(index+1)
-          }
         }
 
 
@@ -130,6 +163,9 @@
         let currentOptions=[]
 
         for(let i=0;i<=index;i++){
+          if(!tempdata[this.select[i]]){
+            return    //老数据和新数据不一致，比如设置了第一个下拉的值，但由于不是标准值，无数据
+          }
           currentOptions=tempdata[this.select[i]].data
           tempdata=tempdata[this.select[i]].children
         }
@@ -155,7 +191,7 @@
         }else {
           //无cache数据,ajax请求
 
-          this.$network.get(this.options.url,{
+          return this.$network.get(this.options.url,{
             [this.options.paramName]: currentOptions[this.options.paramField]
           }).then((res)=>{
 
@@ -178,6 +214,24 @@
 
 
         }
+      },
+      getSelectValue(){
+        return this.select
+      },
+      getSelectText(){
+        let select_text=new Array()
+        let cache=this.cache
+
+        for(let i=0;i<this.select.length;i++){
+          if(this.select[i]!=''){
+            select_text.push(cache[this.select[i]].data[this.options.textField])
+            cache=cache[this.select[i]].children
+          }else {
+            select_text.push('')
+          }
+        }
+
+        return select_text
       }
     }
   }
