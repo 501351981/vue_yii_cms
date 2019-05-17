@@ -1,12 +1,12 @@
 <template>
-  <div class="modal-pannel" v-if="isShow">
-    <div class="modal-main" :style="{width:width+'px'}">
+  <div class="modal-pannel" v-if="isShow" @click="cancle">
+    <div class="modal-main" :style="{width:width+'px'}" @click="(e)=>e.stopPropagation()">
       <div class="modal-c">
         <slot></slot>
       </div>
       <div class="btn-area">
-        <button-box class="btn-primary btn-sm" @click="ok">确定</button-box>
-        <button-box class="btn-default btn-sm" @click="cancle">取消</button-box>
+        <button-box class="btn-primary btn-sm" @click="ok">{{confirmText}}</button-box>
+        <button-box v-if="showCancel" class="btn-default btn-sm" @click="cancle">{{cancelText}}</button-box>
       </div>
     </div>
   </div>
@@ -20,6 +20,18 @@
       width:{
         type:Number,
         default:300
+      },
+      confirmText:{
+        type:String,
+        default:"确定"
+      },
+      cancelText:{
+        type:String,
+        default:"取消"
+      },
+      showCancel:{
+        type:Boolean,
+        default:true
       }
     },
     data:function () {
