@@ -39,4 +39,4 @@ npm run build
 
 后续还会增加，在线接口测试、在线代码运行等等前端工程师经常用到的工具，欢迎大家体验收藏~
 
-[木屋-编程工具箱](https://www.mooov.cn/)
+[木屋-编程工具箱](https://www.mooov.cn?from=github)
