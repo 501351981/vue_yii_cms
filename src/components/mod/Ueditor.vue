@@ -5,7 +5,7 @@
 </template>
 <script>
   import  '../../../static/lib/ueditor/ueditor.config'
-  import  '../../../static/lib/ueditor/ueditor.all'
+  import  '../../../static/lib/ueditor/ueditor.all.min'
   import  '../../../static/lib/ueditor/lang/zh-cn/zh-cn'
   import  '../../../static/lib/ueditor/ueditor.parse'
 
